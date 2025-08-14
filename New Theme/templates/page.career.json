@@ -1,0 +1,142 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "blocks": {
+        "1_r9pJbG": {
+          "type": "1",
+          "settings": {
+            "heading": "CAREERS",
+            "fontf": "inherit",
+            "text_cl": "#fff",
+            "text_fs": 20,
+            "text_lh": 0,
+            "text_fw": 400,
+            "text_ls": 0,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_mgb": 0,
+            "hidden_mobile": false,
+            "text_fs_mb": 20,
+            "text_lh_mb": 0,
+            "text_ls_mb": 0,
+            "text_mgb_mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "1_r9pJbG"
+      ],
+      "disabled": true,
+      "settings": {
+        "use_specify_image": true,
+        "parallax": false,
+        "color": "#000000",
+        "overlay": 54,
+        "padding": 50,
+        "paddingmb": 50,
+        "mg_b": 50,
+        "mg_bmb": 50,
+        "content_align": "sr4-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "layout": "sr4-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "60px,,60px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "sidebar-page": {
+      "type": "sidebar-page",
+      "blocks": {
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08": {
+          "type": "blog_cate",
+          "settings": {
+            "title": "Blog categories",
+            "cat_link_list": "",
+            "count": true
+          }
+        }
+      },
+      "block_order": [
+        "f69681ed-b75e-42de-be58-fdf73b3b7e08"
+      ],
+      "disabled": true,
+      "settings": {
+        "enable_drawer": false,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
+    "top_heading_DaKk9X": {
+      "type": "top_heading",
+      "blocks": {
+        "bl_heading_F6WcAb": {
+          "type": "bl_heading",
+          "settings": {
+            "top_heading": "CAREERS"
+          }
+        },
+        "bl_subheading_X7yNRm": {
+          "type": "bl_subheading",
+          "settings": {
+            "top_subheading": "Connect with us for career and internship opportunities:<br>\n<a href=\"mailto:info@abc.com\">info@abc.com</a>"
+          }
+        }
+      },
+      "block_order": [
+        "bl_heading_F6WcAb",
+        "bl_subheading_X7yNRm"
+      ],
+      "settings": {
+        "design_heading": "11",
+        "heading_align": "sr4-text-center",
+        "layout": "sr4-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "35px,,50px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": "30px,,30px,",
+        "pd_mb": "",
+        "use_cus_css": true,
+        "code_cus_css": ".SectionID h3.sr4-section-title.sr4-title {\n    font-size: 34px;\n    line-height: 41px;\n    font-weight: 400;\n    padding-bottom: 22px;\n    margin-bottom: 31px;\n}\n.SectionID .sr4-subtitle {\n    color: #2B2B2B;\n}\n.SectionID .sr4-subtitle > a {\n    text-decoration: underline;\n}\n.SectionID .sr4_des_title_11 .sr4-section-title>span:after{\nmax-width: 439px;\n    width: 100%;\n    height: 0.5px;\n    background-color: #717171;\n}"
+      }
+    }
+  },
+  "order": [
+    "heading",
+    "main",
+    "sidebar-page",
+    "top_heading_DaKk9X"
+  ]
+}

@@ -1,0 +1,606 @@
+<!-- sections/contact-form.liquid -->
+{{ 'section.css' | asset_url | stylesheet_tag }}
+{{ 'button-style.css' | asset_url | stylesheet_tag }}
+<link href="{{ 'custom-effect.css' | asset_url }}" rel="stylesheet" media="print" onload="this.media='all'">
+{%- liquid
+    assign sid = section.id
+    assign se_stts = section.settings  
+    assign se_blocks = section.blocks  
+    assign stt_layout = se_stts.layout
+    assign stt_image_bg = se_stts.image_bg
+    if stt_layout == 'sr4-se-container' 
+        assign html_layout = '<div class="sr4-container">__</div></div>' | split: '__'
+    elsif stt_layout == 'sr4-container-wrap'
+        assign html_layout = '<div class="sr4-container">__</div>' | split: '__'
+    else
+        assign html_layout = '__' | split: '__'
+    endif 
+    assign page_content = page.content   
+    assign formId = 'contact_form_page'
+    assign sr4_se_class = 'sr4_nt_se_' | append: sid
+    if se_stts.use_cus_css and se_stts.code_cus_css != blank
+        render 'se_cus_css', code_cus_css: se_stts.code_cus_css, sr4_se_class: sr4_se_class
+    endif 
+ -%}
+{%- if se_stts.enable_map %}<style>.sr4-se_contact_map iframe {margin-bottom: 0;padding: 0;display: block;width: 100%;border: none;}</style><div class="sr4-se_contact_map">{{ se_stts.map }}</div>{% endif -%}
+<div class="sr4-section-inner {{ sr4_se_class }} sr4_nt_se_{{ sid }} {{ stt_layout }}{% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %} sr4-has-imgbg lazyloadsr4{% endif %}" {% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %} data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2"{% endif %} {% render 'section_style', se_stts: se_stts -%} >
+    {{- html_layout[0] -}}
+    {%- if stt_layout == 'sr4-se-container' -%}
+        <div class="sr4-container-inner{% if stt_image_bg != blank %} sr4-has-imgbg lazyloadsr4{% endif %}" {% if stt_image_bg != blank %} data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2"{% endif %}>{% endif -%}
+        <div class="sr4-row sr4-justify-content-around">
+            {%- for block in section.blocks -%}
+                {%- assign bk_stts = block.settings -%} 
+                {%- assign button_style = bk_stts.button_style -%}
+                {%- case block.type -%}
+                    {%- when 'bl_form' -%}
+                        <div class="sr4-col-item sr4-col-md-7 sr4-col-12 multi_contact_form" style="width: 55%;">
+                          <div class="form_toggle_buttons">
+                            <div class="slider"></div>
+                            <button onclick="btnTog(this)" class="toggle_button activeForm">BOUTIQUE</button>
+                            <button onclick="btnTog1(this)" class="toggle_button">E-STORE</button>
+                          </div>
+                          <div class="contact_form__" style="padding-top: 2px;">
+                            {%- form 'contact', id: formId -%}
+                                {%- render 'form-status', form: form, form_id: formId -%}
+                              {% if bk_stts.heading != blank %}
+                                <h3 class="sr4-form-title">{{ bk_stts.heading }}</h3>
+                              {% endif %}
+                                <p>
+                                    <!-- <label for="{{ formId }}-name">{{ 'templates.contact.form.name' | t }}</label> -->
+                                    <input style="background:transparent;" placeholder="{{ 'templates.contact.form.name' | t }}*" required="required" type="text" id="{{ formId }}-name" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                                </p>
+                                <p class="wdth">
+                                    <!-- <label for="{{ formId }}-email">{{ 'templates.contact.form.email' | t }}</label> -->
+                                    <input style="background:transparent;" placeholder="{{ 'templates.contact.form.email' | t }}*" required="required" type="email" id="{{ formId }}-email" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" aria-required="true" required="required"
+                                    {%- if form.errors contains 'email' -%}class="sr4-input--error" aria-invalid="true" aria-describedby="{{ formId }}-email-error"{%- endif -%}
+                                >
+                                    {%- if form.errors contains 'email' -%}
+                                        <span id="{{ formId }}-email-error" class="sr4-input-error-message"><i class="las la-exclamation-triangle"></i>{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+                                    {%- endif -%}
+                                </p>
+                                {%- if bk_stts.enable_phone -%}
+                                    <p class="wdth">
+                                        <!-- <label for="{{ formId }}-phone">{{ 'templates.contact.form.phone' | t }}</label> -->
+                                        <input style="background:transparent;" placeholder="{{ 'templates.contact.form.phone' | t }}" required="required" type="tel" id="{{ formId }}-phone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+                                    </p>
+                                {%- endif -%}
+                                <p>
+                                    <!-- <label for="{{ formId }}-message">{{ 'templates.contact.form.message' | t }}</label> -->
+                                    <textarea style="background:transparent;" placeholder="{{ 'templates.contact.form.message' | t }}*" rows="20" id="{{ formId }}-message" name="contact[body]" required="required" class="sr4-input-textarea">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+                                </p>
+                                <input type="submit" class="sr4-btn sr4-btn-base sr4-btn-style-{{ button_style }} sr4-btn-size-{{ bk_stts.btn_size }} sr4-btn-color-{{ bk_stts.btn_cl }}{% if bk_stts.enable_full_btn %} sr4-w-100 sr4-justify-content-center{% endif %} sr4-btn-effect-fade sr4-cursor-pointer" value="{{ 'templates.contact.form.submit' | t }}">
+                            {%- endform -%}
+                           
+                          </div>
+                          <div class="pr_form__" style="display:none;">
+                            {% if bk_stts.heading != blank %}
+                              <h3 class="sr4-form-title">{{ bk_stts.heading }}</h3>
+                            {% endif %}
+                            <div style="margin:0 auto;" class="pxFormGenerator" id="sfFZOE58xrqFASTxgYfhnQ"></div>
+                        </div>
+                    {%- else -%}
+                        <div class="sr4-col-item sr4-contact-info sr4-col-md-4 sr4-col-12 sr4-rte">
+                            {%- if bk_stts.heading != blank -%}<h3 class="sr4-info-heading">{{ bk_stts.heading }}</h3>{%- endif -%}
+                            {%- if bk_stts.text != blank -%}{{ bk_stts.text }}{%- endif -%}
+                        </div>
+                {%- endcase -%}
+            {%- endfor -%}
+        </div>
+    {{- html_layout[1] -}}
+</div>
+<style>
+.sr4-contact-form input.sr4-input--error {
+    border-color: var(--sr4-error-color)!important;
+    margin-bottom: 5px;
+}
+.sr4-contact-form input[type=date],
+.sr4-contact-form input[type=email],
+.sr4-contact-form input[type=number], 
+.sr4-contact-form input[type=password],
+.sr4-contact-form input[type=tel],
+.sr4-contact-form input[type=text],
+.sr4-contact-form input[type=url],
+.sr4-contact-form select,
+.sr4-contact-form textarea {
+    width: 100%;
+    height: 34px;
+    line-height: 18px;
+    transition: border-color .5s;
+    box-shadow: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.sr4-contact-form .sr4-input-textarea{
+    min-height: 50px;
+    overflow:hidden;
+    padding: 10px 15px;
+}
+
+.sr4-contact-form .sr4-fine-print{font-style:italic}
+.sr4-contact-form .sr4-input-error-message i{color:var(--sr4-error-color);margin-right:5px;}
+.sr4-contact-form .sr4-form-message ul li{
+    list-style:disc;
+}
+.sr4-contact-form .sr4-form-message--error{
+    color: #651818;
+    border: 1px solid var(--sr4-error-color);
+    background-color: #fff8f8;
+    padding: 15px 20px;
+    text-align: left;
+    width: 100%;
+    margin: 0 0 27.5px;
+}
+.sr4-contact-form .sr4-form-message__title {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.sr4-contact-form .sr4-form-title,
+.sr4-contact-form .sr4-info-heading{
+    margin-top:20px;
+    margin-bottom:20px;  
+}
+
+.sr4-contact-form .sr4-btn-style-bordered,
+.sr4-contact-form .sr4-btn-style-link{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+.sr4-contact-form .sr4-btn-style-link{
+    border-bottom: none;
+}
+
+form#contact_form_page > p {
+  width: 100%;
+  margin-bottom: 18px !important;
+}
+form#contact_form_page {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 20px;
+  margin-bottom: 108px;
+}
+.form_toggle_buttons {
+  position: relative;
+  display: flex;
+  border: 1px solid #717171;
+  border-radius: 0;
+  overflow: hidden;
+  width: 100%;
+  max-width: 310px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 55px;
+}
+
+button.toggle_button {
+  position: relative;
+  background: transparent;
+  width: 50%;
+  z-index: 2;
+  font-family: var(--font-family-3) !important;
+  color: #909090;
+  font-weight: 400;
+  border-radius: 0;
+  text-align: center;
+  padding: 10px 20px;
+  transition: color 0.3s;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+button.toggle_button.activeForm {
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.form_toggle_buttons .slider {
+  position: absolute;
+  background: #000000;
+  height: 100%;
+  width: 50%;
+  border-radius: 0;
+  transition: all 0.4s ease;
+  z-index: 1;
+}
+.sr4-contact-form h3.sr4-form-title {
+  font-size: 36px;
+  font-weight: 400;
+  font-family: var(--font-family-1);
+  line-height: 43px;
+  letter-spacing: 2px;
+  margin: 0;
+  margin-bottom: 40px;
+}
+form#contact_form_page input, form#contact_form_page textarea {
+  border: 1px solid #000000;
+  border-radius: 0;
+}
+form#contact_form_page input,
+form#contact_form_page select,
+form#contact_form_page textarea{
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #000;
+  line-height: 1.42857143;
+  letter-spacing: .07em;
+}
+form#contact_form_page input::placeholder,
+form#contact_form_page textarea::placeholder{
+  font-size: 12px;
+  color: #000; 
+}
+form#contact_form_page input[type="submit"] {
+  padding: 8px 30px;
+  line-height: 1.42857143;
+  height: 100%;
+  margin: 0 auto;
+  font-weight: 700;
+  font-family: var(--font-family-1) !important;
+}
+.contactFormContain {
+  background: #F9F8F4;
+  padding: 38px 20px 30px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+h2.storeHeading {
+  font-size: 20px;
+  color: #000;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  font-family: var(--font-family-1);
+  padding-bottom: 15px;
+  border-bottom: 1px solid #717171;
+}
+.info {
+  margin-top: 45px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 30px;
+  padding: 0 0 0 20px;
+}
+.info > div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 28px;
+  font-size: 16px;
+  line-height: 19px;
+  color: #000;
+  font-weight: 400;
+  font-family: var(--font-family-2);
+}
+.info span svg {
+  width: 20px;
+  height: 20px;
+}
+.info > div span {
+  display: flex;
+}
+.info > div a[href^="tel:"] {
+  text-decoration: underline;
+}
+.mapEmbaded {
+  height: 315px;
+}
+.estore_details, .boutique_details {
+  width: 100%;
+}
+.estore_details a, .boutique_details a {
+  word-break: break-word;
+}
+@media only screen and (min-width:768px){
+  
+}
+@media only screen and (max-width:900px){
+  .sr4-contact-form .sr4-col-item {
+    width: 100% !important;
+    padding: 0;
+  }
+  .contactFormContain{
+    margin-bottom: 28px;
+  }
+  .multi_contact_form {
+    padding: 43px 24px 0 !important;
+  }
+  .form_toggle_buttons{
+    max-width: 261px;
+    margin-bottom: 40px;
+  }
+  button.toggle_button{
+    font-size: 16px;
+  }
+  .sr4-contact-form h3.sr4-form-title {
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+</style>
+
+<script>
+function btnTog(ele) {
+  ele.classList.add("activeForm");
+  document.querySelectorAll('.toggle_button')[1].classList.remove("activeForm");
+  document.querySelector(".pr_form__").style.display = 'none';
+  document.querySelector(".contact_form__").style.display = 'block';
+  ele.parentNode.querySelector('.slider').style.transform = 'translateX(0%)';
+}
+function btnTog1(ele) {
+  ele.classList.add("activeForm");
+  document.querySelectorAll('.toggle_button')[0].classList.remove("activeForm");
+  document.querySelector(".contact_form__").style.display = 'none';
+  document.querySelector(".pr_form__").style.display = 'block';
+  ele.parentNode.querySelector('.slider').style.transform = 'translateX(100%)';
+}
+</script>
+                
+{%- schema -%}
+{
+    "name": "Contact Form",
+    "tag": "section",
+    "class": "sr4-section sr4-section-main sr4-contact-form",
+    "settings":[
+        {
+            "type": "header",
+            "content": "1.General options"
+        },
+        {
+            "type":"checkbox",
+            "id":"enable_map",
+            "label":"Enable map",
+            "default":false
+        },
+        {
+            "type":"textarea",
+            "id":"map",
+            "label":"Map",
+            "default":"<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.8939060848147!2d144.81158271584684!3d-37.74563313792195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65fa6debeb781%3A0xe1d23f5d1759961e!2s184%20Main%20Rd%20E%2C%20St%20Albans%20VIC%203021%2C%20%C3%9Ac!5e0!3m2!1svi!2s!4v1618277125252!5m2!1svi!2s\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>" 
+        },
+        {
+            "type": "select","id": "layout","default": "sr4-container-wrap","label": "Layout",
+            "options": [
+                { "value": "sr4-se-container", "label": "Container"},
+                { "value": "sr4-container-wrap", "label": "Wrapped container"},
+                { "value": "sr4-container-fluid", "label": "Full width"}
+            ]
+        },
+        {
+            "type": "color",
+            "id": "cl_bg",
+            "label": "Background"
+        },
+        {
+            "type": "color_background",
+            "id": "cl_bg_gradient",
+            "label": "Background gradient"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_bg",
+            "label": "Background image"
+        },
+        {
+            "type": "text",
+            "id": "mg",
+            "label": "Margin",
+            "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank",
+            "default": "50px,,50px,",
+            "placeholder": ",,50px,"
+        },
+        {
+            "type": "text",
+            "id": "pd",
+            "label": "Padding",
+            "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank",
+            "placeholder": "50px,,50px,"
+        },
+        {
+            "type": "header",
+            "content": "+ Design Tablet Options"
+        },
+        {
+            "type": "text",
+            "id": "mg_tb",
+            "label": "Margin",
+            "placeholder": ",,50px,"
+        },
+        {
+            "type": "text",
+            "id": "pd_tb",
+            "label": "Padding",
+            "placeholder": ",,50px,"
+        }, 
+        {
+            "type": "header",
+            "content": "+ Design mobile options"
+        },
+        {
+            "type": "text",
+            "id": "mg_mb",
+            "label": "Margin",
+            "default": ",,30px,",
+            "placeholder": ",,50px,"
+        },
+        {
+            "type": "text",
+            "id": "pd_mb",
+            "label": "Padding",
+            "placeholder": ",,50px,"
+        },
+        {
+            "type": "header",
+            "content": "2. Custom css"
+        },
+        {
+            "id": "use_cus_css",
+            "type": "checkbox",
+            "label": "Use custom css",
+            "default":false,
+            "info": "If you want custom style for this section."
+        },
+        { 
+            "id": "code_cus_css",
+            "type": "textarea",
+            "label": "Code custom css",
+            "info": "Use selector .SectionID to style css"
+            
+        }
+    ],
+    "blocks":[
+        {
+            "name":"Contact Form",
+            "type":"bl_form",
+            "limit":1,
+            "settings":[
+                {
+                    "type":"text",
+                    "id":"heading",
+                    "label":"Heading",
+                    "default":"DROP US A LINE"
+                },
+                {
+                    "type":"checkbox",
+                    "id":"enable_phone",
+                    "label":"Enable phone",
+                    "default":true
+                },
+                {
+                    "type":"header",
+                    "content":"+ Options button submit"
+                },
+                {
+                    "type":"checkbox",
+                    "id":"enable_full_btn",
+                    "label":"Enable button full width",
+                    "default":false
+                },
+                {
+                    "type": "select",
+                    "id": "button_style",
+                    "label": "Button style",
+                    "options": [
+                        {
+                            "label": "Default",
+                            "value": "default"
+                        },
+                        {
+                            "label": "Outline",
+                            "value": "outline"
+                        },
+                        {
+                            "label": "Bordered bottom",
+                            "value": "bordered"
+                        },
+                        {
+                            "label": "Link",
+                            "value": "link"
+                        }
+                    ]
+                },
+                {
+                    "type": "select",
+                    "id": "btn_size",
+                    "label": "Button size",
+                    "default":"large",
+                    "options": [
+                        {
+                            "label": "Extra small",
+                            "value": "small"
+                        },
+                        {
+                            "label": "Small",
+                            "value": "extra-small"
+                        },
+                        {
+                            "label": "Medium",
+                            "value": "medium"
+                        },
+                        {
+                            "label": "Large",
+                            "value": "extra-medium"
+                        },
+                        {
+                            "label": "Extra large",
+                            "value": "large"
+                        },
+                        {
+                            "label": "Extra extra large",
+                            "value": "extra-large"
+                        }
+                    ]
+                },
+                {
+                    "type": "select",
+                    "id": "btn_cl",
+                    "label": "Button color",
+                    "default": "dark",
+                    "options": [
+                        {
+                            "value": "light",
+                            "label": "Light"
+                        },
+                        {
+                            "value": "dark",
+                            "label": "Dark"
+                        },
+                        {
+                            "value": "primary",
+                            "label": "Primary"
+                        },
+                        {
+                            "value": "custom1",
+                            "label": "Custom color 1"
+                        },
+                        {
+                            "value": "custom2",
+                            "label": "Custom color 2"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name":"Contact Infomation",
+            "type":"bl_info",
+            "limit":1,
+            "settings":[
+                {
+                    "type":"text",
+                    "id":"heading",
+                    "label":"Heading",
+                    "default":"CONTACT INFORMATION"
+                },
+                {
+                    "type": "html",
+                    "id": "text",
+                    "label": "Text",
+                    "default": "<p>We love to hear from you on our customer service, merchandise, website or any topics you want to share with us. Your comments and suggestions will be appreciated. Please complete the form below.</p><p><i class=\"las la-home fs__16\"></i> 184 Main Rd E, St Albans Victoria 3021, Australia</p><p><i class=\"las la-phone fs__16\"></i> 1800-123-222 / 1900-1570-230</p><p><i class=\"las la-envelope fs__16\"></i> contact@company.com</p><i class=\"las la-clock fs__16\"></i> Everyday 9:00-17:00</p>"
+                }
+            ]
+        }
+    ],
+    "presets":[
+        {
+            "name":"Contact form",
+            "blocks":[
+                { "type": "bl_form"},{ "type": "bl_info"}
+            ]
+        }
+    ]
+}
+{% endschema %}

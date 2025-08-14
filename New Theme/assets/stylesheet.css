@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Saol Standard';
+    src: url('https://cdn.shopify.com/s/files/1/0727/6652/1599/files/SaolStandard-Thin.woff2?v=1732358006') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0727/6652/1599/files/SaolStandard-Thin.woff?v=1732358006') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Saol Standard';
+    src: url('https://cdn.shopify.com/s/files/1/0727/6652/1599/files/SaolStandard-Regular.woff2?v=1732358006') format('woff2'),
+        url('https://cdn.shopify.com/s/files/1/0727/6652/1599/files/SaolStandard-Regular.woff?v=1732358006') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root{
+  --font-family-4: 'Saol Standard';
+}

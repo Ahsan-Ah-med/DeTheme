@@ -1,0 +1,329 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "custom_liquid_ifrmqF": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"cusTag\">NEW</div>"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "txt_tr_pr": "uppercase",
+            "fnt_df_pr": "1",
+            "size_pr": 18,
+            "fw_pr": 700,
+            "lh_pr": 22,
+            "ls_pr": 0,
+            "pr_title_color": "#000000"
+          }
+        },
+        "custom_liquid_BReU6K": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{{product.type}}"
+          }
+        },
+        "price_review": {
+          "type": "price_review",
+          "settings": {
+            "price": "0",
+            "type_sale": "0",
+            "tax_ship": false,
+            "rating": false,
+            "review_liquid": "",
+            "size_price_pr": 14,
+            "fw_price_pr": 700,
+            "price_color": "#1b1b1b",
+            "price_sale_color": "#ec0101"
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "des": "1",
+            "text": "",
+            "length": 25,
+            "readm": false,
+            "readm_txt": "Read more"
+          }
+        },
+        "size_delivery_ask_igXiFr": {
+          "type": "size_delivery_ask",
+          "settings": {
+            "size_chart": "2",
+            "pos_sizeg": "2",
+            "sc_type": "2",
+            "page": "",
+            "image": "shopify://shop_images/Screenshot_2025-02-09_213215.png",
+            "size_ck": "size",
+            "delivery": false,
+            "page_dr": "",
+            "ask": false,
+            "phone": false
+          }
+        },
+        "form": {
+          "type": "form",
+          "settings": {
+            "selector_mode": "block2",
+            "color_mode": "variant_image",
+            "enable_fit_ratio_img": true,
+            "color_size": "exlarge",
+            "show_qty": true,
+            "enable_wishlist": true,
+            "enable_compare": true,
+            "btn_atc_full": false,
+            "pr_btn_round": 0,
+            "ani": "none",
+            "time": 5,
+            "btn_txt": "2",
+            "btn_icon": false,
+            "button_style": "default",
+            "button_color": "primary",
+            "button_effect": "sweep-to-top",
+            "wishlist_color": "#222222",
+            "wishlist_color_hover": "#005b69",
+            "wishlist_color_active": "#e81e1e",
+            "compare_color": "#222222",
+            "compare_color_hover": "#005b69",
+            "compare_color_active": "#222222",
+            "show_dynamic_checkout": false,
+            "btn_txt2": "3",
+            "button_color_payment": "dark",
+            "product_list": [],
+            "show_product_current": true,
+            "qty_val": "0",
+            "advance_label": "Choose style",
+            "advance_pr_list": []
+          }
+        },
+        "custom_liquid_zWBXCi": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div class=\"deli_main\">\n    <div class=\"del_flex del_bot\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0619/9695/7785/files/Vector_70.svg?v=1736243624\" alt=\"nationwide\">\n        <div class=\"deli_title margin_l_1\">2-3 working days nationwide</div>\n    </div>\n    <div class=\"del_flex\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0619/9695/7785/files/Vector_71.svg?v=1736243623\"\n            alt=\"international\">\n        <div class=\"deli_title margin_l_2\">5-7 working days international</div>\n    </div>\n</div>\n<style>\n    .deli_main {\n        border-bottom: 1px solid #000;\n        padding-bottom: 20px;\n    }\n\n    .del_flex {\n        display: flex;\n        align-items: center;\n    }\n\n    .del_bot {\n        margin-bottom: 10px;\n    }\n\n    .margin_l_1 {\n        margin-left: 15px;\n    }\n\n    .margin_l_2 {\n        margin-left: 14px;\n    }\n\n    .deli_title {\n        font-size: 12px;\n        font-weight: 400;\n        font-style: italic;\n    }\n</style>"
+          }
+        },
+        "tab_liquid_eBa88Y": {
+          "type": "tab_liquid",
+          "disabled": true,
+          "settings": {
+            "title": "Description",
+            "custom_liquid": "{{product.description}}"
+          }
+        },
+        "tab_liquid_f7zxNC": {
+          "type": "tab_liquid",
+          "settings": {
+            "title": "Description",
+            "custom_liquid": "{{product.description}}\n\n{% assign categories = \"Shirt,Kurti,Saree,Saree Skirt,Choli,Pishwas,Khalidar,Kaftan,Kurta,Cape,Pants,Dhaka Pants,Lehenga,Shalwar,Ajaar,Trouser,Dupatta,Shawl\" | split: \",\" %}\n\n<div class=\"product-metafields\">\n  {% for category in categories %}\n    {% assign metafield_key = category | handleize %} \n    {% if product.metafields.custom[metafield_key] != blank %}\n      <p><strong>{{ category }}:</strong> {{ product.metafields.custom[metafield_key] }}</p>\n    {% endif %}\n  {% endfor %}\n</div>\n\n<style>\n.product-metafields p {\n    margin-bottom: 3px;\n}\n</style>"
+          }
+        },
+        "tab_liquid_r3qexg": {
+          "type": "tab_liquid",
+          "settings": {
+            "title": "Delivery Timeline",
+            "custom_liquid": "{% if product.type == 'Unstitched' %}\n<div>\n    <div style=\"margin-bottom: 10px;\">\n        <div class=\"head_Uns\">Unstitched</div>\n        <div><strong>Local:</strong> 1 to 3 working days</div>\n        <div><strong>International:</strong> 5 to 7 working days</div>\n    </div>\n    <div class=\"head_Uns\">Stitched</div>\n    <div>2 to 3 weeks</div>\n</div>\n{% endif %}\n\n{% if product.type == 'Everyday Luxe' %}\n<div>3 to 4 weeks</div>\n{% endif %}\n\n{% if product.type == 'Signature Pret' %}\n<div>3 to 4 weeks</div>\n{% endif %}\n\n{% if product.type == 'Luxury Pret' %}\n<div>4 to 5 weeks</div>\n{% endif %}\n\n{% if product.type == 'Formals' %}\n<div>7 to 8 weeks</div>\n{% endif %}\n\n{% if product.type == 'Bridal' %}\n<div>3 to 4 months</div>\n{% endif %}\n\n<style>\n    .head_Uns {\n        font-size: 15px;\n        font-weight: 600;\n    }\n</style>"
+          }
+        },
+        "tab_liquid_PJB8mE": {
+          "type": "tab_liquid",
+          "disabled": true,
+          "settings": {
+            "title": "Disclaimer",
+            "custom_liquid": "At ABC, we make every effort to display the colors of our products as accurately as possible. However, colors may vary from one device to another."
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_ifrmqF",
+        "title",
+        "custom_liquid_BReU6K",
+        "price_review",
+        "description",
+        "size_delivery_ask_igXiFr",
+        "form",
+        "custom_liquid_zWBXCi",
+        "tab_liquid_eBa88Y",
+        "tab_liquid_f7zxNC",
+        "tab_liquid_r3qexg",
+        "tab_liquid_PJB8mE"
+      ],
+      "settings": {
+        "pr_layout": "full",
+        "enable_sticky_info": true,
+        "media_layout": "two_columns",
+        "media_size": "large",
+        "thumb_lr_size": "small",
+        "image_ratio": "ratioadapt",
+        "image_size": "cover",
+        "image_position": "8",
+        "main_click": "pswp",
+        "zoom_tp": "inner",
+        "enable_zoom_icon": true,
+        "enable_zoom_click_mb": true,
+        "enable_video_looping": false,
+        "enable_video_muting": false,
+        "enable_video_autoplaying": false,
+        "eff": "slide",
+        "nav_btn": false,
+        "btn_vi": "always",
+        "btn_owl": "default",
+        "btn_shape": "none",
+        "btn_cl": "dark",
+        "btn_size": "small",
+        "btn_hidden_mobile": false,
+        "nav_dot": false,
+        "dot_owl": "default",
+        "dots_cl": "light",
+        "dots_round": true,
+        "dots_space": 10,
+        "dots_hidden_mobile": false,
+        "tabs_design": "accordion",
+        "tabs_design_mb": "accordion",
+        "tabs_position": "inner",
+        "enable_first_tab": true,
+        "tabs_layout_fix": "default",
+        "bg": "#ffffff",
+        "bg_mb": "#ffffff",
+        "product_list": [],
+        "sticky_mode": "1",
+        "sticky_show": "2",
+        "sticky_layout_mb": "minimal",
+        "enable_select": true,
+        "ani": "none",
+        "time": 6
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "custom_css": [],
+      "settings": {
+        "show": true,
+        "design_heading": "1",
+        "heading_align": "sr4-text-start",
+        "top_heading": "You May Also Like",
+        "icon_heading": "las la-gem",
+        "top_subheading": "",
+        "tophead_mb": 20,
+        "product_des": "2",
+        "show_vendor": false,
+        "use_cdt": false,
+        "limit": 8,
+        "display_type": "3",
+        "image_ratio": "ratio2_3",
+        "image_size": "nt_cover",
+        "image_position": "8",
+        "content_align": "default",
+        "col_dk": "4",
+        "col_tb": "3",
+        "col_mb": "2",
+        "space_h_item": "8",
+        "space_v_item": "10",
+        "space_h_item_mb": "8",
+        "space_v_item_mb": "8",
+        "layout_des": "2",
+        "loop": true,
+        "au_time": 4,
+        "au_hover": false,
+        "nav_btn": true,
+        "btn_vi": "always",
+        "btn_owl": "default",
+        "btn_shape": "round",
+        "btn_cl": "custom1",
+        "btn_size": "small",
+        "btn_hidden_mobile": true,
+        "nav_dot": false,
+        "dot_owl": "1",
+        "dots_cl": "dark",
+        "dots_round": true,
+        "dots_space": 10,
+        "dots_hidden_mobile": false,
+        "layout": "sr4-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "85px,,60px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": "31px,,47px,",
+        "pd_mb": ""
+      }
+    },
+    "recently-viewed-products": {
+      "type": "recently_viewed",
+      "disabled": true,
+      "settings": {
+        "show": true,
+        "design_heading": "1",
+        "heading_align": "sr4-text-start",
+        "top_heading": "Get The Look",
+        "icon_heading": "las la-gem",
+        "top_subheading": "",
+        "tophead_mb": 20,
+        "product_des": "2",
+        "show_vendor": false,
+        "use_cdt": false,
+        "limit": 12,
+        "sortby": "1",
+        "unavailable_prs": "show",
+        "image_ratio": "ratio2_3",
+        "image_size": "cover",
+        "image_position": "8",
+        "content_align": "default",
+        "col_dk": "4",
+        "col_tb": "3",
+        "col_mb": "2",
+        "space_h_item": "8",
+        "space_v_item": "10",
+        "space_h_item_mb": "8",
+        "space_v_item_mb": "10",
+        "layout_des": "2",
+        "loop": false,
+        "au_time": 0,
+        "au_hover": false,
+        "nav_btn": true,
+        "btn_vi": "always",
+        "btn_owl": "default",
+        "btn_shape": "round",
+        "btn_cl": "custom1",
+        "btn_size": "small",
+        "btn_hidden_mobile": true,
+        "nav_dot": false,
+        "dot_owl": "default",
+        "dots_cl": "dark",
+        "dots_round": true,
+        "dots_space": 10,
+        "dots_hidden_mobile": false,
+        "layout": "sr4-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": ",,30px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,20px,",
+        "pd_mb": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations",
+    "recently-viewed-products"
+  ]
+}
