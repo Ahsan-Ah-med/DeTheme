@@ -34,7 +34,7 @@
          {%- assign pd_item = bk_stts.padding_inner | remove:' ' | split:',' -%}
          {%- assign pd_item_tb = bk_stts.padding_inner_tb | remove:' ' | split:',' -%}
          {%- assign pd_item_mb = bk_stts.padding_inner_mb | remove:' ' | split:',' -%}
-            <div class="sr4-custom-col sr4-col-item sr4-col-lg-{{bk_stts.col_dk}} sr4-col-md-{{bk_stts.col_tb}} sr4-col-{{bk_stts.col_mb}} bl-{{block.id}}">
+            <div class="sr4-custom-col sr4-col-item sr4-col-lg-{{bk_stts.col_dk}} sr4-col-md-{{bk_stts.col_tb}} sr4-col-{{bk_stts.col_mb}} bl-{{block.id}}{% if bk_stts.hide_desktop %} sr4-d-lg-none{% endif %}{% if bk_stts.hide_tablet %} sr4-d-md-none{% if bk_stts.hide_desktop == false %} sr4-d-lg-block{% endif %}{% endif %}{% if bk_stts.hide_mobile %} sr4-hidden-mobile-true{% endif %}">
               <div class="sr4-col-inner sr4-ver-center-{{bk_stts.align_vertical}} sr4-text-lg-{{bk_stts.content_align}} sr4-text-md-{{bk_stts.content_align_tablet}} sr4-text-{{bk_stts.content_align_mobile}} {% if bk_stts.bg_image != blank -%}  lazyloadsr4 sr4-has-imgbg {%- endif -%}"  {%- if bk_stts.bg_image != blank -%}  data-bgset="{{ bk_stts.bg_image | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2" {%- endif -%}  style="--bg-cl:{{bk_stts.bg_cl}};--pd: {{pd_item[0] | default: 0}} {{pd_item[1] | default: 0}} {{pd_item[2] | default: 0}} {{pd_item[3] | default: 0}};--pd-tb: {{pd_item_tb[0] | default: 0}} {{pd_item_tb[1] | default: 0}} {{pd_item_tb[2] | default: 0}} {{pd_item_tb[3] | default: 0}};--pd-mb: {{pd_item_mb[0] | default: 0}} {{pd_item_mb[1] | default: 0}} {{pd_item_mb[2] | default: 0}} {{pd_item_mb[3] | default: 0}};" >
                 <div class="sr4-w-100"> 
                   {%- for block in se_blocks offset:index2 -%}
@@ -293,6 +293,10 @@
               "label": "20px"
           },
           {
+              "value": "25",
+              "label": "25px"
+          },
+          {
               "value": "30",
               "label": "30px"
           }
@@ -521,10 +525,17 @@
         "name": "Col (Parent)",
         "settings": [
           {
+            "type": "checkbox",
+            "id": "hide_desktop",
+            "label": "Hide On Desktop",
+            "default": false,
+          },
+          {
             "type": "select",
             "id": "col_dk",
             "label": "Item width",
             "default": "6",
+            "visible_if": "{{ block.settings.hide_desktop == false }}",
             "options": [
               {
                 "value": "12",
@@ -559,12 +570,19 @@
                 "label": "25%"
               }
             ]
+          },
+          {
+            "type": "checkbox",
+            "id": "hide_tablet",
+            "label": "Hide On Tablet",
+            "default": false,
           },
           {
             "type": "select",
             "id": "col_tb",
             "label": "Item width (Tablet)",
             "default": "6",
+            "visible_if": "{{ block.settings.hide_tablet == false }}",
             "options": [
               {
                 "value": "12",
@@ -601,10 +619,17 @@
             ]
           },
           {
+            "type": "checkbox",
+            "id": "hide_mobile",
+            "label": "Hide On Mobile",
+            "default": false,
+          },
+          {
             "type": "select",
             "id": "col_mb",
             "label": "Item width (Mobile)",
             "default": "12",
+            "visible_if": "{{ block.settings.hide_mobile == false }}",
             "options": [
               {
                 "value": "12",
