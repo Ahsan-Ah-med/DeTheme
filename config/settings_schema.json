@@ -2423,7 +2423,7 @@
       },
       {
         "type": "checkbox",
-        "id": "t4s_custom_js",
+        "id": "sr4_custom_js",
         "label": "Use custom js",
         "info": "Please add your code into custom.js file",
         "default": false
