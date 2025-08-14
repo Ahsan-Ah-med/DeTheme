@@ -35,7 +35,7 @@
     {{-html_layout[0]-}}
     {%- if stt_layout == 'sr4-se-container' -%}<div class="sr4-container-inner{% if stt_image_bg != blank %} sr4-has-imgbg lazyloadsr4{% endif %}" {% if stt_image_bg != blank %} data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2"{% endif %}>{% endif -%}
     {%- render 'section_tophead',se_stts:se_stts -%}
-    <div class="sr4-shipping-list {% if carousel_mobile %} carousel-disable-md sr4-flicky-slider flickitysr4 sr4-dots-style-default sr4-dots-cl-{{se_stts.dots_cl}} sr4-dots-round-{{se_stts.dots_round}} {% endif %} sr4-shipping-padding-{{se_stts.design_padding}} sr4-shipping-icon-{{se_stts.icon_des}} sr4-shipping-icon-{{se_stts.icon_size}} sr4-{{se_stts.content_align}} sr4-ver-center-{{se_stts.align_vertical}} use_border_{{se_stts.border}} sr4-row sr4-row-cols-lg-{{se_stts.col_dk}} sr4-row-cols-md-{{se_stts.col_tb}} sr4-row-cols-{{se_stts.col_mb}}  sr4-gx-md-{{se_stts.space_h_item}} sr4-gy-md-{{se_stts.space_v_item}} sr4-gx-{{se_stts.space_h_item_mb}} sr4-gy-{{se_stts.space_v_item_mb}}" style="--icon-cl: {{se_stts.cl_ic}};--icon-cl2: {{cl_ic2}};--bd-cl: {{se_stts.cl_bd}}; --bg-cl: {{se_stts.bg_item}};--title-cl: {{se_stts.cl_hd}};--content-cl: {{se_stts.cl_cot}};--hd-fs: {{ se_stts.hd_fs }}px; --txt-fs: {{ se_stts.txt_fs }}px; --hd-fw: {{ se_stts.hd_fw }};" data-flickitysr4-js='{"watchCSS":1,"setPrevNextButtons":false,"arrowIcon":"1","imagesLoaded": 0,"adaptiveHeight": 0, "contain": 1, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": false,"prevNextButtons": false,"percentPosition": 1,"pageDots": true, "autoPlay" : false, "pauseAutoPlayOnHover" : true }'>
+    <div class="sr4-shipping-list {% if carousel_mobile %} carousel-disable-md sr4-flicky-slider flickitysr4 sr4-dots-style-default sr4-dots-cl-{{se_stts.dots_cl}} sr4-dots-round-{{se_stts.dots_round}} {% endif %} sr4-shipping-padding-{{se_stts.design_padding}} sr4-shipping-icon-{{se_stts.icon_des}} sr4-shipping-icon-{{se_stts.icon_size}} sr4-{{se_stts.content_align}} sr4-ver-center-{{se_stts.align_vertical}} use_border_{{se_stts.border}} sr4-row sr4-row-cols-lg-{{se_stts.col_dk}} sr4-row-cols-md-{{se_stts.col_tb}} sr4-row-cols-{{se_stts.col_mb}}  sr4-gx-md-{{se_stts.space_h_item}} sr4-gy-md-{{se_stts.space_v_item}} sr4-gx-{{se_stts.space_h_item_mb}} sr4-gy-{{se_stts.space_v_item_mb}}" style="--icon-cl: {{se_stts.cl_ic}};--icon-cl2: {{cl_ic2}};--bd-cl: {{se_stts.cl_bd}}; --bg-cl: {{se_stts.bg_item}};--title-cl: {{se_stts.cl_hd}};--content-cl: {{se_stts.cl_cot}};--hd-fs: {{ se_stts.hd_fs }}px; --txt-fs: {{ se_stts.txt_fs }}px; --hd-fw: {{ se_stts.hd_fw }};" data-flickitysr4-js='{"watchCSS":1,"setPrevNextButtons":false,"arrowIcon":"1","imagesLoaded": 0,"adaptiveHeight": 0, "contain": 1, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": false,"prevNextButtons": false,"percentPosition": 1,"pageDots": {{se_stts.dots_show}}, "autoPlay" : false, "pauseAutoPlayOnHover" : true }'>
       {%- if section.blocks.size > 0 -%}
         {%- for block in section.blocks -%}
           {%- assign bk_stts = block.settings -%}
@@ -645,9 +645,16 @@
       },
       {
         "type": "checkbox",
+        "id": "dots_show",
+        "label": "Enable dots",
+        "default": false
+      },
+      {
+        "type": "checkbox",
         "id": "dots_round",
         "label": "Enable dots round",
-        "default": true
+        "default": true,
+        "visible_if": "{{ section.settings.dots_show == true }}"
       },
       {
         "type": "header",
