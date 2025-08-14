@@ -111,7 +111,7 @@
     {%- elsif on_sale -%}
 
       <del>{{ money_compare_at_price }}</del>
-      <ins>{{ 'products.product.from_price_html' | t: price_min: money_price, class: 'sr4-price-from' }}</ins>
+      <ins>{{ 'products.product.from_price_html' | t: price_max: money_price, class: 'sr4-price-from' }}</ins>
 
     {%- else -%}
       {% comment %}
