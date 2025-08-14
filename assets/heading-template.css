@@ -84,8 +84,3 @@ h1#b_heading-template-0 {
   font-size: 7rem;
 }
 
-@media (max-width: 1024px) {
-  .page-head {
-    padding-bottom: 5px;
-  }
-}
