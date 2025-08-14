@@ -1614,6 +1614,12 @@ em {
     --ts-gutter-x: 30px;
   }
 
+  .sr4-g-md-44,
+  .sr4-gx-md-44,
+  .sr4-px-md-44 {
+    --ts-gutter-x: 44px;
+  }
+
   .sr4-g-md-30,
   .sr4-gy-md-30 {
     --ts-gutter-y: 30px;
