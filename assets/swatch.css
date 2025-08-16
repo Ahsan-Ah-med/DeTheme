@@ -315,12 +315,6 @@ sr4-selector-mode__circle  */
 .sr4-product-quick-view .sr4-swatch {
   margin-top: 25px;
 }
-.sr4-swatch__list {
-  border: 1px solid #ebebeb;
-  width: fit-content;
-  padding: 7px;
-  border-radius: 5px;
-}
 
 @media only screen and (max-width:767px){
   .sr4-swatch__title{
