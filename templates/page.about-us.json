@@ -45,7 +45,6 @@
     },
     "sidebar-page": {
       "type": "sidebar-page",
-      "disabled": true,
       "blocks": {
         "f69681ed-b75e-42de-be58-fdf73b3b7e08": {
           "type": "blog_cate",
@@ -59,6 +58,7 @@
       "block_order": [
         "f69681ed-b75e-42de-be58-fdf73b3b7e08"
       ],
+      "disabled": true,
       "settings": {
         "enable_drawer": false,
         "space": 50,
@@ -75,8 +75,11 @@
         "704f7515-e5ee-422a-85b5-1d2336c49c84": {
           "type": "bl_col",
           "settings": {
+            "hide_desktop": false,
             "col_dk": "6",
+            "hide_tablet": false,
             "col_tb": "12",
+            "hide_mobile": false,
             "col_mb": "12",
             "align_vertical": false,
             "content_align": "center",
@@ -88,58 +91,14 @@
             "bg_cl": "#ffffff"
           }
         },
-        "3bed2e98-9d6e-4ca2-9ae7-d2adf41adab3": {
-          "type": "custom_text",
-          "settings": {
-            "text": "About Us",
-            "remove_br_tag": false,
-            "tag": "h2",
-            "fontf": "1",
-            "text_cl": "#707070",
-            "text_fs": 63,
-            "text_lh": 0,
-            "text_fw": 400,
-            "text_ls": 0,
-            "font_italic": false,
-            "text_shadow": false,
-            "text_mgb": 15,
-            "hidden_mobile": false,
-            "text_fs_mb": 46,
-            "text_lh_mb": 0,
-            "text_ls_mb": 0,
-            "text_mgb_mobile": 10
-          }
-        },
-        "61423dc9-f77b-44bd-9617-641b8578cf62": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image_child": "shopify://shop_images/Image_63.png",
-            "img_link": "",
-            "open_link": "_self",
-            "img_width": 0,
-            "img_width_mb": 0,
-            "img_align": "center",
-            "img_align_tb": "center",
-            "img_align_mobile": "center",
-            "b_effect": "none",
-            "hidden_mobile": false,
-            "mgb": 20,
-            "mgb_mb": 20
-          }
-        },
-        "1b1b9469-d5fe-46a0-b176-ff8d4b7a7762": {
-          "type": "html",
-          "settings": {
-            "html_content": "<div class=\"aboutImageSection\">\n<img class=\"aboutPic1\" src=\"https://cdn.shopify.com/s/files/1/0761/3959/4004/files/Image_62.png?v=1685360927&amp;width=400\" alt=\"about\">\n\n<img class=\"aboutPic2\" src=\"https://cdn.shopify.com/s/files/1/0761/3959/4004/files/Image_63.png?v=1685361858&amp;width=400\" alt=\"about2\">\n</div>\n\n<style>\n@media (max-width:1024px){\n.aboutPic2{display:none;}\n.aboutImageSection{margin-bottom:2rem;}\n}\n@media (min-width:1024px){\n.aboutPic1{width:70%;}\n.aboutPic2{width:50%;position: absolute;top: -89px;left: 0;}\n.aboutImageSection{position: relative;display: flex;justify-content: flex-end; margin-top: 10rem;}\n}\n</style>",
-            "hidden_mobile": false
-          }
-        },
         "16520612827b9f51d5-0": {
           "type": "bl_col",
           "settings": {
+            "hide_desktop": false,
             "col_dk": "6",
+            "hide_tablet": false,
             "col_tb": "12",
+            "hide_mobile": false,
             "col_mb": "12",
             "align_vertical": false,
             "content_align": "start",
@@ -173,76 +132,10 @@
             "text_mgb_mobile": 10
           }
         },
-        "16520612827b9f51d5-2": {
-          "type": "custom_text",
-          "settings": {
-            "text": "Nimra Kashif began her label with an incredible range of attire in 2019. The stylishly unique outfits speak for themselves of their designer’s gifted skill of immaculate cuts and chic fashion sense.\n\n<style>\n.linkNK{\ncolor:#0284c7;\n}\n</style>",
-            "remove_br_tag": false,
-            "tag": "p",
-            "fontf": "inherit",
-            "text_cl": "#707070",
-            "text_fs": 14,
-            "text_lh": 24,
-            "text_fw": 400,
-            "text_ls": 0,
-            "font_italic": false,
-            "text_shadow": false,
-            "text_mgb": 13,
-            "hidden_mobile": false,
-            "text_fs_mb": 16,
-            "text_lh_mb": 16,
-            "text_ls_mb": 0,
-            "text_mgb_mobile": 10
-          }
-        },
-        "da805a8c-3cdc-4299-97a0-12f39a796f5f": {
-          "type": "custom_text",
-          "settings": {
-            "text": "Within a short period, Nirma has created an original eponymous clothing brand that stands for its versatile bold cuts along with its traditional yet contemporary cuts. The dresses have a harmonious range of bright and beautiful colors blended with classic craft and modern contour.",
-            "remove_br_tag": false,
-            "tag": "p",
-            "fontf": "inherit",
-            "text_cl": "#707070",
-            "text_fs": 14,
-            "text_lh": 24,
-            "text_fw": 400,
-            "text_ls": 0,
-            "font_italic": false,
-            "text_shadow": false,
-            "text_mgb": 15,
-            "hidden_mobile": false,
-            "text_fs_mb": 16,
-            "text_lh_mb": 16,
-            "text_ls_mb": 0,
-            "text_mgb_mobile": 10
-          }
-        },
-        "5e6e43bc-9f0d-4820-b37c-5117ab156257": {
-          "type": "custom_text",
-          "settings": {
-            "text": "With <a class=\"linkNK\" href=\"/collections/casual-pret\">Pret</a>, <a class=\"linkNK\" href=\"/collections/luxury-pret\">Luxury Pret</a>, and <a class=\"linkNK\" href=\"/collections/luxury-formals\">Luxury formals</a> Nirma Kashif is home to the masses looking for high-end fashion ensembles to glamorize their occasions. We take pride in offering a large array of pure fabrics, cuts, adornment, and embroideries by hand, Zardozi, Mukesh, and Gara work.",
-            "remove_br_tag": false,
-            "tag": "p",
-            "fontf": "inherit",
-            "text_cl": "#707070",
-            "text_fs": 14,
-            "text_lh": 24,
-            "text_fw": 400,
-            "text_ls": 0,
-            "font_italic": false,
-            "text_shadow": false,
-            "text_mgb": 15,
-            "hidden_mobile": false,
-            "text_fs_mb": 16,
-            "text_lh_mb": 16,
-            "text_ls_mb": 0,
-            "text_mgb_mobile": 10
-          }
-        },
         "15ff0fd5-f7d6-47cf-859a-64d07a88c256": {
           "type": "custom_text",
           "settings": {
-            "text": "We understand the needs of our clients and therefore we try our best to deliver the finest garments keeping in mind the weather, the ongoing trends, and the suitable colors. Our goal is never to be a popular brand but a brand that satisfies its clients and makes a happy place in their hearts.",
+            "text": "lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,",
             "remove_br_tag": false,
             "tag": "p",
             "fontf": "inherit",
@@ -264,14 +157,8 @@
       },
       "block_order": [
         "704f7515-e5ee-422a-85b5-1d2336c49c84",
-        "3bed2e98-9d6e-4ca2-9ae7-d2adf41adab3",
-        "61423dc9-f77b-44bd-9617-641b8578cf62",
-        "1b1b9469-d5fe-46a0-b176-ff8d4b7a7762",
         "16520612827b9f51d5-0",
         "16520612827b9f51d5-1",
-        "16520612827b9f51d5-2",
-        "da805a8c-3cdc-4299-97a0-12f39a796f5f",
-        "5e6e43bc-9f0d-4820-b37c-5117ab156257",
         "15ff0fd5-f7d6-47cf-859a-64d07a88c256"
       ],
       "settings": {
