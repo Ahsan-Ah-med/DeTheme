@@ -3805,12 +3805,6 @@ span.sr4-btn-atc_text {
     > div {
     padding: 2rem 0;
   }
-  .sr4-tab-wrapper > a {
-    background-color: white;
-    /* border-bottom: 1px solid #cbd5e1; */
-    color: #707070;
-    font-size: 1.5rem;
-  }
   .sr4-product-tabs-wrapper.sr4-product-tabs-wrapper-template--19111144620308__main.is--tab-design__accordion.is--tab-design-mb__accordion.is--tab-layout__default.is--tab-position__inner {
     width: 80%;
   }
@@ -3854,12 +3848,6 @@ span.sr4-btn-atc_text {
 }
 
 @media (max-width: 1024px) {
-  .sr4-tab-wrapper > a {
-    background-color: white;
-    /* border-bottom: 1px solid #cbd5e1; */
-    color: #707070;
-    font-size: 1.5rem;
-  }
 
   h2#b_16520612827b9f51d5-1 {
     display: none;
