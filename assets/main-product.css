@@ -993,9 +993,6 @@ button.sr4-product-form__submit[disabled=disabled] {
   right: 0;
   top: -15px;
 }
-h4.sr4-swatch__title {
-    min-width: 53px;
-}
 h1.sr4-product__title {
   max-width: 90%;
   /* text-overflow: ellipsis;
