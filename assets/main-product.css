@@ -1044,7 +1044,7 @@ body:has(div#mySizeChartModal[style="display: block;"]) {
   .sr4-main-product__content ol.flickitysr4-page-dots {
     position: relative !important;
     z-index: 1 !important;
-    bottom: -12px !important;
+    bottom: 30px !important;
   }
   .sr4-main-product__content .sr4-flicky-slider {
     --slider-dot-width: 6px;
