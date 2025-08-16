@@ -1018,13 +1018,6 @@ body:has(div#mySizeChartModal[style="display: block;"]) {
   border-radius: 5px;
 }
 
-
-@media only screen and (min-width:1023px) {
-  .sr4-product__media-wrapper {
-    max-width: 50%;
-  }
-  
-}
 @media only screen and (min-width:768px) {
   
   .sr4-container.sr4-main-product__content {
