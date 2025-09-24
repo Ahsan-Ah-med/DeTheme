@@ -919,7 +919,7 @@ button.shopify-payment-button__button.shopify-payment-button__button--unbranded.
 .sr4-product__info-container .sr4-product-price{
   font-family: var(--font-family-2);
 }
-.sr4-container.sr4-main-product__content {
+.sr4-container.sr4-main-product__content:not(.is--layout_full) {
   --wrapper-mw: 1085px;
 }
 
