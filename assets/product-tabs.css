@@ -79,7 +79,6 @@
 .sr4-tab__title {
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(var(--text-color-rgb), 0.08);
 }
 
 .sr4-tab__title .sr4-tab__text {
