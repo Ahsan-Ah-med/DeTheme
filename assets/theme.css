@@ -3765,23 +3765,6 @@ border-radius: 50% !important;
   margin-bottom: 0.2rem;
 }
 
-button.sr4-btn-filter,
-.sr4-dropdown.sr4-dropdown__sortby button {
-  /* border: none;
-  font-weight: 500 !important;
-  color: black !important; */
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
-}
-@media (max-width: 768px) {
-  .sr4-dropdown__sortby button[data-dropdown-open] {
-    min-width: 80px;
-  }
-}
-@media (min-width: 768px) {
-  .sr4-dropdown__sortby button[data-dropdown-open] {
-    min-width: 120px;
-  }
-}
 /* ------------------------------------------- */
 /* product page */
 .sr4-liquid_38af7ea4-8340-431a-ad80-a6713f694bdd.sr4-pr__custom-liquid.sr4-rte {
