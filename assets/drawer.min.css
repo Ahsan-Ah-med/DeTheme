@@ -256,9 +256,6 @@ li#item_mb_acc a{
 .sr4-mb-nav__icon:after, .sr4-mb-nav__icon:before{
   content: none
 }
-.sr4-sub-menu .sr4-menu-item:last-child {
-    margin-bottom: 15px;
-}
 .sr4-drawer-menu__close {
   /* background: #fff; */
   left: calc(100vw - 130px);
