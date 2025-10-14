@@ -145,9 +145,6 @@
   .sr4-footer-icon-collapse {
     display: none;
   }
-  .sr4-socials-block {
-    margin-top: 50px;
-  }
 }
 @media (max-width: 767px) {
   .sr4-socials-block,
