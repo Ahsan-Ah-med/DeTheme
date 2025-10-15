@@ -4384,7 +4384,7 @@ template,
   opacity: 1;
 }
 .sr4-loading--bg {
-  width: 50px;
+  width: 100%;
   height: 50px;
   background-image: var(--lz-img);
   background-repeat: no-repeat;
