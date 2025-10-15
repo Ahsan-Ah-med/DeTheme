@@ -4914,9 +4914,3 @@ shopify-payment-terms {
   border: 0.1rem solid transparent;
   background-clip: content-box;
 }
-/* .money:not(#sr4-mini_cart .money, .sr4-filter-hidden .money, .sr4-active-filters .money, .sr4-fbt__price .money){
- display: none;
-}
-.sr4-fbt__wrap {
- display: none !important;
-} */
