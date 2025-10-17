@@ -33,12 +33,7 @@
                 {%- assign button_style = bk_stts.button_style -%}
                 {%- case block.type -%}
                     {%- when 'bl_form' -%}
-                        <div class="sr4-col-item sr4-col-md-7 sr4-col-12 multi_contact_form" style="width: 55%;">
-                          <div class="form_toggle_buttons">
-                            <div class="slider"></div>
-                            <button onclick="btnTog(this)" class="toggle_button activeForm">BOUTIQUE</button>
-                            <button onclick="btnTog1(this)" class="toggle_button">E-STORE</button>
-                          </div>
+                        <div class="sr4-col-item sr4-col-md-7 sr4-col-12 multi_contact_form">
                           <div class="contact_form__" style="padding-top: 2px;">
                             {%- form 'contact', id: formId -%}
                                 {%- render 'form-status', form: form, form_id: formId -%}
@@ -72,12 +67,6 @@
                             {%- endform -%}
                            
                           </div>
-                          <div class="pr_form__" style="display:none;">
-                            {% if bk_stts.heading != blank %}
-                              <h3 class="sr4-form-title">{{ bk_stts.heading }}</h3>
-                            {% endif %}
-                            <div style="margin:0 auto;" class="pxFormGenerator" id="sfFZOE58xrqFASTxgYfhnQ"></div>
-                        </div>
                     {%- else -%}
                         <div class="sr4-col-item sr4-contact-info sr4-col-md-4 sr4-col-12 sr4-rte">
                             {%- if bk_stts.heading != blank -%}<h3 class="sr4-info-heading">{{ bk_stts.heading }}</h3>{%- endif -%}
@@ -331,23 +320,6 @@ h2.storeHeading {
 }
 
 </style>
-
-<script>
-function btnTog(ele) {
-  ele.classList.add("activeForm");
-  document.querySelectorAll('.toggle_button')[1].classList.remove("activeForm");
-  document.querySelector(".pr_form__").style.display = 'none';
-  document.querySelector(".contact_form__").style.display = 'block';
-  ele.parentNode.querySelector('.slider').style.transform = 'translateX(0%)';
-}
-function btnTog1(ele) {
-  ele.classList.add("activeForm");
-  document.querySelectorAll('.toggle_button')[0].classList.remove("activeForm");
-  document.querySelector(".contact_form__").style.display = 'none';
-  document.querySelector(".pr_form__").style.display = 'block';
-  ele.parentNode.querySelector('.slider').style.transform = 'translateX(100%)';
-}
-</script>
                 
 {%- schema -%}
 {
