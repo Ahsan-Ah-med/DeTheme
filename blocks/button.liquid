@@ -1,0 +1,320 @@
+{{ 'button-style.css' | asset_url | stylesheet_tag }}
+{{ 'general-block.css' | asset_url | stylesheet_tag }}
+<link href="{{ 'custom-effect.css' | asset_url }}" rel="stylesheet" media="print" onload="this.media='all'">
+{%- assign bk_stts = block.settings -%}
+{%- if bk_stts.button_link != blank and bk_stts.button_text != blank -%}
+  {%- assign  button_style = bk_stts.button_style -%}
+  <a href="{{bk_stts.button_link}}" target="{{bk_stts.target_link}}" class=" sr4-btn sr4-btn-custom  sr4-pe-auto sr4-fnt-fm-{{bk_stts.fontf}} sr4-hidden-mobile-{{bk_stts.hidden_mobile}} sr4-btn-style-{{button_style}} {% if button_style == 'default' or button_style == 'outline'%}sr4-btn-effect-{{bk_stts.button_effect}}{% endif %}" id="b_{{block.id}}" {{ block.shopify_attributes }} {%- render 'bk_cus_style',type:'custom_button',bk_stts:bk_stts,ani_delay:ani_delay -%}>{{bk_stts.button_text}} {%- if bk_stts.button_icon_w > 0 -%}<svg class="sr4-btn-icon"><use xlink:href="#sr4-icon-btn"></use></svg>{%- endif -%}</a>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Theme Button",
+    "settings": [
+            {
+                "type":"text",
+                "id":"button_text",
+                "label":"Button label",
+                "default":"Button label",
+                "info":"If set blank will not show"
+            },
+            {
+                "type":"url",
+                "id":"button_link",
+                "label":"Button link",
+                "info":"If set blank will not show"
+            },
+            {
+                "type":"select",
+                "id":"target_link",
+                "label":"Open link in",
+                "default":"_self",
+                "options":[
+                    {
+                        "value": "_self",
+                        "label": "Current window"
+                    },
+                    {
+                        "value": "_blank",
+                        "label": "New window"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "fontf",
+                "default":"inherit",
+                "label": "Font family",
+                "options": [
+                    {
+                        "label": "Inherit",
+                        "value": "inherit"
+                    },
+                    {
+                        "label": "Font family #1",
+                        "value": "1"
+                    },
+                    {
+                        "label": "Font family #2",
+                        "value": "2" 
+                    },
+                    {
+                        "label": "Font family #3",
+                        "value": "3"
+                    }
+                ]
+            },
+            {
+                "type":"range",
+                "id":"button_icon_w",
+                "label":"Button icon width",
+                "min":0,
+                "max":50,
+                "step":1,
+                "unit":"px",
+                "default":0
+            },
+            {
+                "type": "select",
+                "id": "button_style",
+                "label": "Button style",
+                "options": [
+                    {
+                        "label": "Default",
+                        "value": "default"
+                    },
+                    {
+                        "label": "Outline",
+                        "value": "outline"
+                    },
+                    {
+                        "label": "Bordered top",
+                        "value": "bordered_top"
+                    },
+                    {
+                        "label": "Bordered bottom", 
+                        "value": "bordered"
+                    },
+                    {
+                        "label": "Link",
+                        "value": "link"
+                    }
+                ]
+             },
+             {
+                "type":"select",
+                "id":"button_effect",
+                "label":"Button hover effect",
+                "default":"default",
+                "info":"Only working button style default, outline",
+                "options":[
+                    {
+                        "label":"Default",
+                        "value":"default"
+                    },
+                    {
+                        "label":"Fade",
+                        "value":"fade"
+                    },
+                    {
+                        "label":"Rectangle out",
+                        "value":"rectangle-out"
+                    },
+                    {
+                        "label":"Sweep to right",
+                        "value":"sweep-to-right"
+                    },
+                    {
+                        "label":"Sweep to left",
+                        "value":"sweep-to-left"
+                    },
+                    {
+                        "label":"Sweep to bottom",
+                        "value":"sweep-to-bottom"
+                    },
+                    {
+                        "label":"Sweep to top",
+                        "value":"sweep-to-top"
+                    },
+                    {
+                        "label":"Shutter out horizontal",
+                        "value":"shutter-out-horizontal"
+                    },
+                    {
+                        "label":"Outline",
+                        "value":"outline"
+                    },
+                    {
+                        "label":"Shadow",
+                        "value":"shadow"
+                    }
+                ]
+            },
+            {
+                "type":"color",
+                "id":"pri_cl",
+                "label":"Primary color",
+                "default":"#222"
+            },
+            {
+                "type":"color",
+                "id":"second_cl",
+                "label":"Secondary color"
+            },
+            {
+                "type":"color",
+                "id":"pri_cl_hover",
+                "label":"Primary color hover",
+                "default":"#005b69"
+            },
+            {
+                "type":"color",
+                "id":"second_cl_hover",
+                "label":"Secondary color hover",
+                "info":"Only working button style default, outline",
+                "default":"#fff"
+            },
+            {
+                "type":"range",
+                "id":"fsbutton",
+                "label":"Font size",
+                "max":50,
+                "min":10,
+                "step":1,
+                "unit":"px",
+                "default":14
+            },
+            {
+                "type":"range",
+                "id":"fwbutton",
+                "label":"Font weight",
+                "min":100,
+                "max":900,
+                "step":100,
+                "default":400
+            },
+            {
+                "type":"range",
+                "id":"button_ls",
+                "label":"Letter spacing",
+                "min":0,
+                "max":10,
+                "step":0.1,
+                "unit":"px",
+                "default":0
+            },
+            {
+                "type":"range",
+                "id":"button_mh",
+                "label":"Min height",
+                "min":20,
+                "max":80,
+                "step":1,
+                "unit":"px",
+                "default":42,
+                "info":"Only working button style default, outline, bordered top"
+            },
+            {
+                "type":"range",
+                "id":"button_bdr",
+                "label":"Border radius",
+                "min":0,
+                "max":40,
+                "step":1,
+                "unit":"px",
+                "default":0,
+                "info":"Only working button style default, outline"
+            },
+            {
+                "type":"range",
+                "id":"button_pd_lr",
+                "label":"Padding left/right",
+                "min":0,
+                "max":70,
+                "step":1,
+                "unit":"px",
+                "default":30,
+                "info":"Only working button style default, outline"
+            },
+            {
+                "type": "number",
+                "id": "button_mgb",
+                "label": "Margin bottom",
+                "default": 0
+            },
+            {
+                "type":"header",
+                "content":"+ Option mobile"
+            },
+            {
+                "type":"checkbox",
+                "id":"hidden_mobile",
+                "label":"Hidden on mobile ",
+                "default":false
+            },
+            {
+                "type":"range",
+                "id":"button_icon_w_mb",
+                "label":"Button icon width (Mobile)",
+                "min":0,
+                "max":50,
+                "step":1,
+                "unit":"px",
+                "default":0
+            },
+            {
+                "type":"range",
+                "id":"fsbutton_mb",
+                "label":"Font size (Mobile)",
+                "max":50,
+                "min":0,
+                "step":1,
+                "unit":"px",
+                "default":12
+            },
+            {
+                "type":"range",
+                "id":"button_mh_mb",
+                "label":"Min height (Mobile)",
+                "min":10,
+                "max":50,
+                "step":1,
+                "unit":"px",
+                "default":36,
+                "info":"Only working button style default, outline, bordered top"
+            },
+            {
+                "type":"range",
+                "id":"button_pd_lr_mb",
+                "label":"Padding left/right (Mobile)",
+                "min":0,
+                "max":50,
+                "step":1,
+                "unit":"px",
+                "default":15,
+                "info":"Only working button style default, outline"
+            },
+            {
+                "type":"range",
+                "id":"button_ls_mb",
+                "label":"Letter spacing (Mobile)",
+                "min":0,
+                "max":10,
+                "step":0.1,
+                "unit":"px",
+                "default":0
+            },
+            {
+                "type": "number",
+                "id": "button_mgb_mb",
+                "label": "Margin bottom (Mobile)",
+                "default": 0
+            }
+        ],
+    "presets": [
+      {
+        "name": "Theme Button"
+      }
+    ]
+  }
+{% endschema %}
