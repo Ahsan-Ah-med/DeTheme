@@ -108,17 +108,17 @@
 
 {%- endif -%}
 {%- if font_source == '3' -%}
-{%- assign sr4_font_fm1 = '{{ settings.fnt_fm_c1 }}' -%}
-{%- assign sr4_font_fm2 = '{{ settings.fnt_fm_c2 }}' -%}
-{%- assign sr4_font_fm3 = '{{ settings.fnt_fm_c3 }}' -%}
+{%- assign sr4_font_fm1 = settings.fnt_fm_c1 -%}
+{%- assign sr4_font_fm2 = settings.fnt_fm_c2 -%}
+{%- assign sr4_font_fm3 = settings.fnt_fm_c3 -%}
 {%- assign sr4_font_fm4 = '' -%}
 {% endif %}
 :root  {
 
   /* CSS Variables */
   --wrapper-mw: {{ settings.cus_w_bd }}px;
-  --font-family-1: {{ sr4_font_fm1 }}, sans-serif;
-  --font-family-2: {{ sr4_font_fm2 }}, sans-serif;
+  --font-family-1: {{ sr4_font_fm1 }};
+  --font-family-2: {{ sr4_font_fm2 }};
   --font-family-3: {{ sr4_font_fm3 }};
   --font-family-4: {{ sr4_font_fm4 }};
   --font-body-family: {% if settings.bd_ffamily == '1' %}{{ sr4_font_fm1 }}, sans-serif
