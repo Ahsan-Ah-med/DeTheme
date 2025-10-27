@@ -37,6 +37,42 @@ sr4p-theme sr4-wrapper__{{settings.general_layout}} rtl_{{isRTL}} swatch_color_s
     <meta name="viewport" content="width=device-width, initial-scale=1, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="theme-color" content="{{ settings.body_bg }}">
     <link rel="canonical" href="{{ canonical_url }}">
+    {%- if settings.font_source == '3' -%}
+    <!-- custom fonts assets -->
+    <style>
+      {% assign c1_woff = settings.fnt_fm_c1 | append: '.woff' %}
+      {% assign c1_woff2 = settings.fnt_fm_c1 | append: '.woff2' %}
+      {% assign c2_woff = settings.fnt_fm_c1 | append: '.woff' %}
+      {% assign c2_woff2 = settings.fnt_fm_c1 | append: '.woff2' %}
+      {% assign c3_woff = settings.fnt_fm_c1 | append: '.woff' %}
+      {% assign c3_woff2 = settings.fnt_fm_c1 | append: '.woff2' %}
+      @font-face {
+        font-family: {{settings.fnt_fm_c1}};
+        src: url("{{ c1_woff2 | file_url }}") format("woff2"),
+            url("{{ c1_woff | file_url }}") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: {{settings.fnt_fm_c2}};
+        src: url("{{ c2_woff2 | file_url }}") format("woff2"),
+            url("{{ c2_woff | file_url }}") format("woff");
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: {{settings.fnt_fm_c3}};
+        src: url("{{ c3_woff2 | file_url }}") format("woff2"),
+            url("{{ c3_woff | file_url }}") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+  {% endif %}
     <link
       rel="preconnect"
       href="https://cdn.shopify.com"
