@@ -748,6 +748,10 @@
           {
             "value": "2",
             "label": "Google"
+          },
+          {
+            "value": "3",
+            "label": "Custom"
           }
         ],
         "label": "From:"
@@ -758,47 +762,82 @@
       },
       {
         "type": "paragraph",
-        "content": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/en/manual/online-store/os/store-speed/improving-speed#fonts)"
+        "content": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https://help.shopify.com/en/manual/online-store/os/store-speed/improving-speed#fonts)",
+        "visible_if": "{{settings.font_source == '1'}}"
       },
       {
         "type": "font_picker",
         "id": "fnt_fm_sp1",
         "label": "Font Family #1",
-        "default": "poppins_n4"
+        "default": "poppins_n4",
+        "visible_if": "{{settings.font_source == '1'}}"
       },
       {
         "type": "font_picker",
         "id": "fnt_fm_sp2",
         "label": "Font Family #2",
-        "default": "poppins_n4"
+        "default": "poppins_n4",
+        "visible_if": "{{settings.font_source == '1'}}"
       },
       {
         "type": "font_picker",
         "id": "fnt_fm_sp3",
         "label": "Font Family #3",
-        "default": "poppins_n4"
+        "default": "poppins_n4",
+        "visible_if": "{{settings.font_source == '1'}}"
       },
       {
         "type": "header",
-        "content": "+ Google Font Settings [Get name your google](https://fonts.google.com/)"
+        "content": "+ Google Font Settings [Get name your google](https://fonts.google.com/)",
+        "visible_if": "{{settings.font_source == '2'}}"
       },
       {
         "type": "text",
         "id": "fnt_fm_gg1",
         "label": "Font Family #1",
-        "default": "Poppins"
+        "default": "Poppins",
+        "visible_if": "{{settings.font_source == '2'}}"
       },
       {
         "type": "text",
         "id": "fnt_fm_gg2",
         "label": "Font Family #2",
-        "default": "Poppins"
+        "default": "Poppins",
+        "visible_if": "{{settings.font_source == '2'}}"
       },
       {
         "type": "text",
         "id": "fnt_fm_gg3",
         "label": "Font Family #3",
-        "default": "Poppins"
+        "default": "Poppins",
+        "visible_if": "{{settings.font_source == '2'}}"
+      },
+      {
+        "type": "header",
+        "content": "Custom Fonts",
+        "info": "+ Enter the name of the font file you uploaded in your Shopify backend.",
+        "visible_if": "{{settings.font_source == '3'}}"
+      },
+      {
+        "type": "text",
+        "id": "fnt_fm_c1",
+        "label": "Font Family #1",
+        "default": "Poppins",
+        "visible_if": "{{settings.font_source == '3'}}"
+      },
+      {
+        "type": "text",
+        "id": "fnt_fm_c2",
+        "label": "Font Family #2",
+        "default": "Poppins",
+        "visible_if": "{{settings.font_source == '3'}}"
+      },
+      {
+        "type": "text",
+        "id": "fnt_fm_c3",
+        "label": "Font Family #3",
+        "default": "Poppins",
+        "visible_if": "{{settings.font_source == '3'}}"
       },
       {
         "type": "header",
