@@ -65,25 +65,25 @@
 					<div id="inchi" style="flex:0 0 60%;">
                       	
 						<p class="line-item-property__field">
-							<input placeholder="Shirt Length (Inch)" required class="required" id="shirtlength" type="text" name="properties[Shirt Length (Inch)]"> </p>
+							<input placeholder="Shirt Length (Inch)" required class="required" disabled="disabled" id="shirtlength" type="number" name="properties[Shirt Length (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Shoulder (Inch)" required class="required" id="shoulder" type="text" name="properties[Shoulder (Inch)]"> </p>
+							<input placeholder="Shoulder (Inch)" required class="required" disabled="disabled" id="shoulder" type="number" name="properties[Shoulder (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Arm Hole (Inch)" required class="required" id="armhole" type="text" name="properties[Arm Hole (Inch)]"> </p>
+							<input placeholder="Arm Hole (Inch)" required class="required" disabled="disabled" id="armhole" type="number" name="properties[Arm Hole (Inch)]"> </p>
                       <p class="line-item-property__field">
-							<input placeholder="Neck Depth (Inch)" required class="required" id="neckdepth" type="text" name="properties[Neck Depth (Inch)]"> </p>
+							<input placeholder="Neck Depth (Inch)" required class="required" disabled="disabled" id="neckdepth" type="number" name="properties[Neck Depth (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Chest (Inch)" required class="required" id="chest" type="text" name="properties[Chest (Inch)]"> </p>
+							<input placeholder="Chest (Inch)" required class="required" disabled="disabled" id="chest" type="number" name="properties[Chest (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Waist (Inch)" required class="required" id="waist" type="text" name="properties[Waist (Inch)]"> </p>
+							<input placeholder="Waist (Inch)" required class="required" disabled="disabled" id="waist" type="number" name="properties[Waist (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Hip (Inch)" required class="required" id="hip" type="text" name="properties[Hips (Inch)]"> </p>
+							<input placeholder="Hip (Inch)" required class="required" disabled="disabled" id="hip" type="number" name="properties[Hips (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Bottom / Daaman (Inch)" required class="required" id="damaan" type="text" name="properties[Bottom/Daaman (Inch)]"> </p>
+							<input placeholder="Bottom / Daaman (Inch)" required class="required" disabled="disabled" id="damaan" type="number" name="properties[Bottom/Daaman (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Sleeve (Inch)" required class="required" id="sleeve" type="text" name="properties[Sleeves (Inch)]"> </p>
+							<input placeholder="Sleeve (Inch)" required class="required" disabled="disabled" id="sleeve" type="number" name="properties[Sleeves (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Wrist Opening (Inch)" required class="required" id="wristopening" type="text" name="properties[Wrist Opening (Inch)]"> </p>
+							<input placeholder="Wrist Opening (Inch)" required class="required" disabled="disabled" id="wristopening" type="number" name="properties[Wrist Opening (Inch)]"> </p>
 					</div>
 				</div>
 			</div>
@@ -173,17 +173,17 @@
 
 					<div id="inchii" style="flex:0 0 60%;">
 						<p class="line-item-property__field">
-							<input placeholder="Trouser Length (Inch)" required class="required" id="trouserlength" type="text" name="properties[Trouser Length (Inch)]"> </p>
+							<input placeholder="Trouser Length (Inch)" required class="required" disabled="disabled" id="trouserlength" type="number" name="properties[Trouser Length (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Waist (Inch)" required class="required" id="Waist" type="text" name="properties[Waist (Inch)]"> </p>
+							<input placeholder="Waist (Inch)" required class="required" disabled="disabled" id="Waist" type="number" name="properties[Waist (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Hip (Inch)" required class="required" id="Hips" type="text" name="properties[Hip (Inch)]"> </p>
+							<input placeholder="Hip (Inch)" required class="required" disabled="disabled" id="Hips" type="number" name="properties[Hip (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Thigh (Inch)" required class="required" id="thigh" type="text" name="properties[Thigh (Inch)]"> </p>
+							<input placeholder="Thigh (Inch)" required class="required" disabled="disabled" id="thigh" type="number" name="properties[Thigh (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Knee (Inch)" required class="required" id="Knee" type="text" name="properties[Knee (Inch)]"> </p>
+							<input placeholder="Knee (Inch)" required class="required" disabled="disabled" id="Knee" type="number" name="properties[Knee (Inch)]"> </p>
 						<p class="line-item-property__field">
-							<input placeholder="Ankle Width (Inch)" required class="required" id="bottoms" type="text" name="properties[Ankle Width (Inch)]"> </p>
+							<input placeholder="Ankle Width (Inch)" required class="required" disabled="disabled" id="bottoms" type="number" name="properties[Ankle Width (Inch)]"> </p>
 					</div>
 				</div>
 			</div>
@@ -460,7 +460,7 @@ a.toggle-unit,a.toggle-unitt,a.toggle-unitt2{
 <script>
 document.querySelector('.sr4-form__product').addEventListener('submit', function(event) {
     // Get all input fields in the form
-    var inputs = event.target.querySelectorAll('input[type="text"], textarea, select');
+    var inputs = event.target.querySelectorAll('input[type="number"], textarea, select');
     var hasFilledField = false;
     // Loop through the inputs and check if any are filled
     inputs.forEach(function(input) {
@@ -483,15 +483,18 @@ document.querySelector('.sr4-form__product').addEventListener('submit', function
 });
    
 document.addEventListener('DOMContentLoaded', () => {
-    const customSizeItem = document.querySelector('.sr4-swatch__item[data-value="Customized"]');
+    const customSizeItem = document.querySelector('.sr4-swatch__item[data-value="Customised"]');
     const template_product = document.querySelector('.template-product');
     const header_categories = document.querySelector('#shopify-section-header-categories-menu');
     const modal = document.getElementById("customSizeModal");
     const span = document.getElementsByClassName("close")[0];
     const resetButton = document.getElementById("resetButton");
     const saveButton = document.getElementById("saveButton");
-
+    if(customSizeItem){
     customSizeItem.addEventListener('click', () => {
+      document.querySelectorAll('#CustomSizeTab input').forEach((ele) => {
+        ele.removeAttribute("disabled");
+      });
       template_product.style.overflow = "hidden";
       modal.style.display = "flex";
       
@@ -506,6 +509,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(tablinks[0])
       tablinks[0].classList.add('active'); 
     });
+    };
 
     span.onclick = function() {
       modal.style.display = "none";
@@ -636,14 +640,14 @@ function setActiveUnitt2(activeLink) {
 }
 
 function clearInputFields() {
-    const inputFields = document.querySelectorAll('input[type="text"]');
+    const inputFields = document.querySelectorAll('input.required[type="number"]');
     inputFields.forEach(input => {
         input.value = '';
     });
 }
 
 function saveInputValues() {
-    const inputFields = document.querySelectorAll('input[type="text"]');
+    const inputFields = document.querySelectorAll('input.required[type="number"]');
     inputFields.forEach(input => {
         // console.log(`${input.name}: ${input.value}`);
     });
