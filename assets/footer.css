@@ -252,10 +252,6 @@
   .sr4-section-inner.sr4_nt_se_footer.sr4_se_footer.sr4-container-wrap {
     padding: 3rem 2rem;
   }
-  p.sr4-text-bl.sr4-fnt-fm-inherit.sr4-font-italic-false.sr4-hidden-mobile-false.sr4-br-mb-false.sr4-text-shadow-false {
-    text-align: center;
-    font-size: 11px;
-  }
   input.sr4-newsletter__email.sr4-text-md-start {
     text-align: left !important;
   }
