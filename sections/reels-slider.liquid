@@ -47,7 +47,39 @@
     </div>
     {{-html_layout[1]-}}
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const lazyVideos = document.querySelectorAll('.js-lazy-video');
 
+    if ('IntersectionObserver' in window) {
+      const videoObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const video = entry.target;
+              const src = video.getAttribute('data-src');
+
+              if (src && src !== '') {
+                video.src = src;
+                video.load();
+
+                video.onloadeddata = () => {
+                  video.style.opacity = '1';
+                };
+              }
+              videoObserver.unobserve(video);
+            }
+          });
+        },
+        {
+          rootMargin: '0px 0px 400px 0px',
+        }
+      );
+
+      lazyVideos.forEach((v) => videoObserver.observe(v));
+    }
+  });
+</script>
 {% schema %}
 {
   "name": "Reels Slider",
