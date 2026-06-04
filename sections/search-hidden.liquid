@@ -123,3 +123,12 @@
    {%- else -%}<div data-viewAll-search class="sr4-drawer__bottom" style="display:none"></div>
    {%- endif -%}
 </div>
+
+<script>
+document.addEventListener('touchstart', function (e) {
+  const input = e.target.closest('.sr4-mini-search__input');
+  if (input) {
+    input.focus();
+  }
+}, { passive: true });
+</script>
