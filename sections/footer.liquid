@@ -32,7 +32,7 @@
             {%- assign index = index|plus:1 -%}
             {%- assign pd_item = bk_stts.padding_inner | remove:' ' | split:',' -%}
             {%- assign pd_item_mb = bk_stts.padding_inner_mb | remove:' ' | split:',' -%}
-            <div class="sr4-custom-col sr4-col-item sr4-col-lg-{{bk_stts.col_dk}} sr4-col-md-{{bk_stts.col_tb}} sr4-col-{{bk_stts.col_mb}} bl-{{block.id}}">
+            <div class="sr4-custom-col sr4-col-item sr4-col-lg-{{bk_stts.col_dk}} sr4-col-md-{{bk_stts.col_tb}} sr4-col-{{bk_stts.col_mb}} bl-{{block.id}}" {% if bk_stts.col_order != blank %}style="--col-order-mb: {{ bk_stts.col_order }};"{% endif %}>
                 <div class="sr4-col-inner {{bk_stts.content_align}} {{bk_stts.content_align_mb}} {%- if bk_stts.bg_image != blank -%}  lazyloadsr4 sr4-has-imgbg  {%- endif -%} {% if forloop.index0 == 1 %}is--footer_opened{% endif %}"  {%- if bk_stts.bg_image != blank -%}  data-bgset="{{ bk_stts.bg_image | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2" {%- endif -%}  style="--pd: {{pd_item[0] | default: 0}} {{pd_item[1] | default: 0}} {{pd_item[2] | default: 0}} {{pd_item[3] | default: 0}};--pd-mb: {{pd_item_mb[0] | default: 0}} {{pd_item_mb[1] | default: 0}} {{pd_item_mb[2] | default: 0}} {{pd_item_mb[3] | default: 0}};">
                     {% if bk_stts.col_heading != blank %}  
                       <div class="sr4-footer-heading sr4-d-flex sr4-align-items-center sr4-justify-content-between sr4-d-md-block sr4-d-none">
@@ -524,6 +524,11 @@
       "type": "bl_col",
       "name": "Col (Parent)",
       "settings": [
+                {
+          "type": "text",
+          "id": "col_order",
+          "label": "Column Order For Mobile"
+        },
         {
           "type": "text",
           "id": "col_heading",
@@ -1628,3 +1633,12 @@
 
 {%- javascript -%}
 {%- endjavascript -%}
+
+<style>
+  @media (max-width: 767px) {
+    /* Kisi bhi block par agar variable set hai to order chal jaye */
+    [style*="--col-order-mb"] {
+      order: var(--col-order-mb) !important;
+    }
+  }
+</style>
