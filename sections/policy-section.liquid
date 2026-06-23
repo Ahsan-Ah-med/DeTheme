@@ -1,4 +1,3 @@
-<!-- sections/policy-section.liquid -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 {{ 'section.css' | asset_url | stylesheet_tag }}
 {%- liquid
@@ -45,17 +44,20 @@
   <div class="sr4-link-page-content-style-{{se_stts.accor_des}} sr4-container">
     {%- render 'section_tophead', se_stts: se_stts -%}
     <div class="sr4-row sr4-gx-md-{{se_stts.space_h_item}} {{se_stts.space_h_item}} sr4-gy-md-{{se_stts.space_v_item}} sr4-gx-{{se_stts.space_h_item_mb}} sr4-gy-{{se_stts.space_v_item_mb}}">
-      {%- for block in arr_item offset: index -%}
+  
+    {%- for block in arr_item offset: index -%}
         {%- assign bk_stts = block.settings -%}
         {%- assign index = index | plus: 1 -%}
         {%- assign pd_item = bk_stts.padding_inner | remove: ' ' | split: ',' -%}
         {%- assign pd_item_tb = bk_stts.padding_inner_tb | remove: ' ' | split: ',' -%}
         {%- assign pd_item_mb = bk_stts.padding_inner_mb | remove: ' ' | split: ',' -%}
-        <div class="sr4-custom-col sr4-col-item sr4-col-lg-{{bk_stts.col_dk}} sr4-col-md-{{bk_stts.col_tb}} sr4-col-{{bk_stts.col_mb}} bl-{{block.id}}">
+        
+        <div class="sr4-custom-col sr4-col-item bl-{{block.id}}" style="--w-dk: {{bk_stts.col_dk}}%; --w-tb: {{bk_stts.col_tb}}%; --w-mb: {{bk_stts.col_mb}}%;">
           <div
             class="sr4-col-inner sr4-ver-center-{{bk_stts.align_vertical}} sr4-text-lg-{{bk_stts.content_align}} sr4-text-md-{{bk_stts.content_align_tablet}} sr4-text-{{bk_stts.content_align_mobile}} {% if bk_stts.bg_image != blank -%}  lazyloadsr4 sr4-has-imgbg {%- endif -%}"
             {%- if bk_stts.bg_image != blank -%}
               data-bgset="{{ bk_stts.bg_image | image_url: width: 1 }}" data-sizes="auto" data-optimumx="2"
+       
             {%- endif -%}
             style="--bg-cl:{{bk_stts.bg_cl}};--pd: {{pd_item[0] | default: 0}} {{pd_item[1] | default: 0}} {{pd_item[2] | default: 0}} {{pd_item[3] | default: 0}};--pd-tb: {{pd_item_tb[0] | default: 0}} {{pd_item_tb[1] | default: 0}} {{pd_item_tb[2] | default: 0}} {{pd_item_tb[3] | default: 0}};--pd-mb: {{pd_item_mb[0] | default: 0}} {{pd_item_mb[1] | default: 0}} {{pd_item_mb[2] | default: 0}} {{pd_item_mb[3] | default: 0}};"
           >
@@ -63,45 +65,56 @@
               {%- for block in se_blocks offset: index2 -%}
                 {%- assign index2 = index2 | plus: 1 -%}
                 {%- assign bk_stts = block.settings -%}
+      
                 {%- if block.type != 'bl_col' -%} {%- else -%}{%- break -%}{%- endif -%}
                 {%- case block.type -%}
                   {%- when 'html' -%}
                     {% if bk_stts.html_content != blank %}
+             
                       {%- assign general_block = true -%}
                       <div
                         class=" sr4-raw-html sr4-rte--list sr4-hidden-mobile-{{bk_stts.hidden_mobile}}"
                         id="b_{{block.id}}"
+             
                         {%- render 'bk_cus_style', type: 'html', bk_stts: bk_stts, ani_delay: ani_delay -%}
                       >
                         {{ bk_stts.html_content }}
                       </div>
+          
                     {% endif %}
                   {%- when 'links' -%}
                     <div
-                      style="--linkSize:{{ bk_stts.font_size_dk }}px;--linkSizeMb:{{ bk_stts.font_size_mb }}px;--linkWeight:{{ bk_stts.font_weight_dk }};--llh:{% if bk_stts.line_height_dk > 0 %}{{ bk_stts.line_height_dk }}px{% else %}1{% endif %};--llhmb:{% if bk_stts.line_height_mb > 0 %}{{ bk_stts.line_height_mb }}px{% else %}1{% endif %};--ls:{{ bk_stts.letter_spacing_dk }}px;--lsmb:{{ bk_stts.letter_spacing_mb }}px;--fc:{{ bk_stts.font_color }};--fca:{{ bk_stts.font_color_active }};--fch:{{ bk_stts.font_color_hover }};--bc:{{ bk_stts.border_color }}"
+                      style="--linkSize:{{ bk_stts.font_size_dk }}px;--linkSizeMb:{{ bk_stts.font_size_mb }}px;--linkWeight:{{ bk_stts.font_weight_dk }};--llh:{% if bk_stts.line_height_dk > 0 %}{{ bk_stts.line_height_dk }}px{% else %}1{% endif %};--llhmb:{% if bk_stts.line_height_mb > 0 %}{{ bk_stts.line_height_mb }}px{%  else %}1{% endif %};--ls:{{ bk_stts.letter_spacing_dk }}px;--lsmb:{{ bk_stts.letter_spacing_mb }}px;--fc:{{ bk_stts.font_color }};--fca:{{ bk_stts.font_color_active }};--fch:{{ bk_stts.font_color_hover }};--bc:{{ bk_stts.border_color }}"
                       class=" sr4-raw-links sr4-rte--list sr4-hidden-mobile-{{bk_stts.hidden_mobile}}"
                       id="b_{{block.id}}"
                       {%- render 'bk_cus_style', type: 'links', bk_stts: bk_stts, ani_delay: ani_delay -%}
+       
                     >
                       {% if bk_stts.menu %}
                         <ul class="link_listing">
                           {% for link in bk_stts.menu.links %}
+      
                             <li
                               {% if link.active %}
                                 class="active"
+             
                               {% endif %}
                             >
                               <a href="{{ link.url }}">{{ link.title }}</a>
+                  
                             </li>
                           {% endfor %}
                         </ul>
                         <select id=list_dropdown onchange="location=this.value;" style="display: none;">
+          
                           {% for link in bk_stts.menu.links %}
                             <option value="{{ link.url }}"
                               {% if link.active %}
+               
                                 class="active"
                                 selected
                               {% endif %}
+                   
                             >
                               <a href="{{ link.url }}">{{ link.title }}</a>
                             </option>
@@ -110,6 +123,7 @@
                       {% endif %}
                     </div>
                   
+              
                   {%- when 'page_content' -%}
                     <div
                       class=" sr4-raw-page-content sr4-rte--list sr4-hidden-mobile-{{bk_stts.hidden_mobile}}"
@@ -119,20 +133,21 @@
                       {{ page.content }}
                     </div>
                   <style>
+             
                     #b_{{block.id}} h2{
-                      font-size: 18px;
-                      font-weight: 500;
-                      color: #303030;
+                      font-size: 16px;
+                      font-weight: 600;
+                      color: #000;
                     }
                     #b_{{block.id}} a{
                       text-decoration: underline !important;
                       cursor: pointer !important;
                     }
                     #b_{{block.id}} p{
-                      font-size: 15px;
+                      font-size: 14px;
                       line-height: 22.56px;
                       margin: 24px 0;
-                      color: #303030;
+                      color: #000;
                     }
                     #b_{{block.id}} h3{
                       font-size: 17px;
@@ -154,10 +169,10 @@
                     }
                     @media only screen and (max-width: 767px){
                       #b_{{block.id}} h2{
-                        font-size: 17px;
+                        font-size: 14px;
                       }
                       #b_{{block.id}} p{
-                        font-size: 15px;
+                        font-size: 12px;
                       }
                       #b_{{block.id}} h3{
                         font-size: 15px;
@@ -172,6 +187,7 @@
               {%- endfor -%}
             </div>
           </div>
+    
         </div>
       {%- endfor -%}
     </div>
@@ -180,7 +196,7 @@
 </div>
 <style type="text/css">
   #sid--{{ sid }} *{
-    font-family: var(--font-family-1);
+    font-family: var(--font-family-2);
   }
   .sr4-custom-section .sr4-col-inner {
     display: flex;
@@ -189,7 +205,7 @@
     height: 100%;
     flex-direction: column;
   }
-   .sr4-custom-col {
+  .sr4-custom-col {
     background-color: var(--bg_cl);
   }
   .sr4-col-inner {
@@ -200,6 +216,21 @@
     display: flex;
     align-items: center;
     height: 100%;
+  }
+
+  /* Custom Flexible Width Styles based on Range Sliders */
+  .sr4-col-item {
+    width: var(--w-dk, 50%) !important;
+  }
+  @media only screen and (max-width: 1023px) {
+    .sr4-col-item {
+      width: var(--w-tb, 50%) !important;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .sr4-col-item {
+      width: var(--w-mb, 100%) !important;
+    }
   }
 
   @media(max-width: 767px) {
@@ -218,9 +249,9 @@
     letter-spacing: var(--ls);
     color: var(--fc);
     border-bottom: 1px solid var(--bc);
-    padding: 22px 0 18px;
+    padding: 20px 0 18px;
     cursor: pointer;
-    /* text-transform: lowercase; */
+    font-family: var(--font-family-2);
   }
   #sid--{{ sid }} .link_listing li:hover{
     color: var(--fch);
@@ -237,7 +268,7 @@
     padding-top: 0;
   }
   #sid--{{ sid }} .link_listing li:last-child{
-    padding-bottom: 0;    
+    padding-bottom: 0;
   }
   #sid--{{ sid }} .link_listing li:last-child {
     border-bottom: none;
@@ -261,31 +292,6 @@
     max-width: 100%;
     margin: 0 auto !important;
   }
-  /* #sid--{{ sid }} h3.accordion-thumb:before {
-    right: -15px;
-    width: 15px;
-    height: 1px;
-    content: "";
-    position: absolute;
-    top: 50%;
-    background-color: #000;
-    transform: translateY(-50%);
-  }
-  #sid--{{ sid }} li.accordion-item.is-active .accordion-thumb:after {
-      transform: translateY(-50%) rotate(90deg);
-  }
-  
-  #sid--{{ sid }} h3.accordion-thumb:after {
-    right: -8px;
-    width: 1px;
-    height: 15px;
-    transition: transform .3s cubic-bezier(.215,.61,.355,1);
-    content: "";
-    position: absolute;
-    top: 50%;
-    background-color: #000;
-    transform: translateY(-50%);
-  } */
   #sid--{{ sid }} h3.accordion-thumb {
     position: relative;
     width: 95%;
@@ -311,7 +317,6 @@
     }
      #sid--{{ sid }} .sr4-custom-col:last-child {
       padding-left: 50px;
-      border-left: 1px solid #D9D9D9;
     }
   }
   @media only screen and (max-width:850px){
@@ -329,9 +334,8 @@
       font-size: var(--linkSizeMb);
       color: var(--fca);
       background: transparent;
-      border: 1px solid #D5D5D5;
       text-align: center;
-      border-radius: 4px;
+      border-radius: 0px;
       padding: 8px 55px 8px 12px;
       height: auto;
       width: 100%;
@@ -339,6 +343,8 @@
       margin: 0 auto 30px;
       font-size: 15px;
       text-transform: capitalize;
+      border: 0;
+      border-bottom: 1px solid #818181;
     }
     #sid--{{ sid }} .sr4-col-inner.sr4-ver-center-false.sr4-text-lg-center.sr4-text-md-center.sr4-text-center {
       width: fit-content;
@@ -382,20 +388,21 @@
 
 <script>
 $(function() {
-    // Pehle se active item ko expand kar do
-    $(".accordion > .accordion-item.is-active").children(".accordion-panel").slideDown();
+    $(".accordion-panel").hide();
+    $(".accordion-item").removeClass("is-active");
 
-    // Sirf .accordion-thumb par click hone par toggle hoga
     $(".accordion .accordion-thumb").click(function(e) {
-        e.stopPropagation(); // (optional) agar nested clicks hon
-
+        e.stopPropagation();
         var $item = $(this).closest(".accordion-item");
 
-        // Baaki items ko close karo
-        $item.siblings(".accordion-item").removeClass("is-active").children(".accordion-panel").slideUp();
+        $item.siblings(".accordion-item")
+             .removeClass("is-active")
+             .children(".accordion-panel")
+             .slideUp();
 
-        // Clicked item ko toggle karo
-        $item.toggleClass("is-active").children(".accordion-panel").slideToggle("ease-out");
+        $item.toggleClass("is-active")
+             .children(".accordion-panel")
+             .slideToggle();
     });
 });
 </script>
@@ -416,62 +423,20 @@ $(function() {
         "label": "+ Design heading",
         "default": "1",
         "options": [
-            {
-                "value": "1",
-                "label": "Design 01"
-            },
-            {
-                "value": "2",
-                "label": "Design 02"
-            },
-            {
-                "value": "3",
-                "label": "Design 03"
-            },
-            {
-                "value": "4",
-                "label": "Design 04"
-            },
-            {
-                "value": "5",
-                "label": "Design 05"
-            },
-            {
-                "value": "6",
-                "label": "Design 06 (width line-awesome)"
-            },
-            {
-                "value": "7",
-                "label": "Design 07"
-            },
-            {
-                "value": "8",
-                "label": "Design 08"
-            },
-            {
-                "value": "9",
-                "label": "Design 09"
-            },
-            {
-                "value": "10",
-                "label": "Design 10"
-            },
-            {
-                "value": "11",
-                "label": "Design 11"
-            },
-            {
-                "value": "12",
-                "label": "Design 12"
-            },
-            {
-                "value": "13",
-                "label": "Design 13"
-            },
-            {
-                "value": "14",
-                "label": "Design 14"
-            }
+           { "value": "1", "label": "Design 01" },
+           { "value": "2", "label": "Design 02" },
+           { "value": "3", "label": "Design 03" },
+           { "value": "4", "label": "Design 04" },
+           { "value": "5", "label": "Design 05" },
+           { "value": "6", "label": "Design 06 (width line-awesome)" },
+           { "value": "7", "label": "Design 07" },
+           { "value": "8", "label": "Design 08" },
+           { "value": "9", "label": "Design 09" },
+           { "value": "10", "label": "Design 10" },
+           { "value": "11", "label": "Design 11" },
+           { "value": "12", "label": "Design 12" },
+           { "value": "13", "label": "Design 13" },
+           { "value": "14", "label": "Design 14" }
         ]
     },
     {
@@ -480,18 +445,9 @@ $(function() {
         "label": "+ Heading align",
         "default": "sr4-text-center",
         "options": [
-            {
-                "value": "sr4-text-start",
-                "label": "Left"
-            },
-            {
-                "value": "sr4-text-center",
-                "label": "Center"
-            },
-            {
-                "value": "sr4-text-end",
-                "label": "Right"
-            }
+           { "value": "sr4-text-start", "label": "Left" },
+           { "value": "sr4-text-center", "label": "Center" },
+           { "value": "sr4-text-end", "label": "Right" }
         ]
     },
     {
@@ -630,132 +586,34 @@ $(function() {
       "name": "Col (Parent)",
       "settings": [
         {
-          "type": "select",
+          "type": "range",
           "id": "col_dk",
-          "label": "Item width",
-          "default": "6",
-          "options": [
-            {
-              "value": "12",
-              "label": "100%"
-            },
-            {
-              "value": "9",
-              "label": "75%"
-            },
-            {
-              "value": "8",
-              "label": "66.66%"
-            },
-            {
-              "value": "7",
-              "label": "58.33%"
-            },
-            {
-              "value": "6",
-              "label": "50%"
-            },
-            {
-              "value": "5",
-              "label": "41.66%"
-            },
-            {
-              "value": "4",
-              "label": "33.33%"
-            },
-            {
-              "value": "3",
-              "label": "25%"
-            },
-            {
-              "value": "2",
-              "label": "20%"
-            }
-          ]
+          "label": "Item width (Desktop)",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
         },
         {
-          "type": "select",
+          "type": "range",
           "id": "col_tb",
           "label": "Item width (Tablet)",
-          "default": "6",
-          "options": [
-            {
-              "value": "12",
-              "label": "100%"
-            },
-            {
-              "value": "9",
-              "label": "75%"
-            },
-            {
-              "value": "8",
-              "label": "66.66%"
-            },
-            {
-              "value": "7",
-              "label": "58.33%"
-            },
-            {
-              "value": "6",
-              "label": "50%"
-            },
-            {
-              "value": "5",
-              "label": "41.66%"
-            },
-            {
-              "value": "4",
-              "label": "33.33%"
-            },
-            {
-              "value": "3",
-              "label": "25%"
-            },
-            {
-              "value": "2",
-              "label": "20%"
-            }
-          ]
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
         },
         {
-          "type": "select",
+          "type": "range",
           "id": "col_mb",
           "label": "Item width (Mobile)",
-          "default": "12",
-          "options": [
-            {
-              "value": "12",
-              "label": "100%"
-            },
-            {
-              "value": "9",
-              "label": "75%"
-            },
-            {
-              "value": "8",
-              "label": "66.66%"
-            },
-            {
-              "value": "7",
-              "label": "58.33%"
-            },
-            {
-              "value": "6",
-              "label": "50%"
-            },
-            {
-              "value": "5",
-              "label": "41.66%"
-            },
-            {
-              "value": "4",
-              "label": "33.33%"
-            },
-            {
-              "value": "3",
-              "label": "25%"
-            }
-          ]
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 100
         },
         {
           "type": "checkbox",
@@ -769,18 +627,9 @@ $(function() {
           "label": "Content align",
           "default": "center",
           "options":[
-              {
-                "label":"Left",
-                "value":"start"
-              },
-              {
-                "label":"Center",
-                "value":"center"
-              },
-              {
-                "label":"Right",
-                "value":"end"
-              }
+              { "label":"Left", "value":"start" },
+              { "label":"Center", "value":"center" },
+              { "label":"Right", "value":"end" }
           ]
         },
         {
@@ -789,18 +638,9 @@ $(function() {
           "label": "Content align (Tablet)",
           "default": "center",
           "options":[
-              {
-                "label":"Left",
-                "value":"start"
-              },
-              {
-                "label":"Center",
-                "value":"center"
-              },
-              {
-                "label":"Right",
-                "value":"end"
-              }
+              { "label":"Left", "value":"start" },
+              { "label":"Center", "value":"center" },
+              { "label":"Right", "value":"end" }
           ]
         },
         {
@@ -809,18 +649,9 @@ $(function() {
           "label":"Content align (Mobile)",
           "default":"center",
           "options":[
-              {
-                  "label":"Left",
-                  "value":"start"
-              },
-              {
-                  "label":"Center",
-                  "value":"center"
-              },
-              {
-                  "label":"Right",
-                  "value":"end"
-              }
+              { "label":"Left", "value":"start" },
+              { "label":"Center", "value":"center" },
+              { "label":"Right", "value":"end" }
           ]
         },
         {
@@ -830,7 +661,7 @@ $(function() {
           "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank",
           "placeholder": "30px,,30px,"
         },
-      {
+        {
           "type": "text",
           "id": "padding_inner_tb",
           "label": "Padding inner (Tablet)",
@@ -983,7 +814,7 @@ $(function() {
           "type": "range",
           "id": "letter_spacing_mb",
           "label": "Letter Spacing",
-          "min": -0,
+          "min": 0,
           "max": 100,
           "unit": "px",
           "step": 1,
@@ -1002,7 +833,7 @@ $(function() {
           "default":false
         }
       ]
-    },
+    }
   ],
 "presets": [
     {

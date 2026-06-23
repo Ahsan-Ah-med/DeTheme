@@ -11,7 +11,6 @@
   "sections": {
     "heading": {
       "type": "heading-template",
-      "disabled": true,
       "settings": {
         "use_specify_image": true,
         "parallax": false,
@@ -44,78 +43,6 @@
         "pd_mb": ""
       }
     },
-    "top_heading_jkBwik": {
-      "type": "top_heading",
-      "blocks": {
-        "bl_heading_ktnWJ8": {
-          "type": "bl_heading",
-          "settings": {
-            "top_heading": "CONTACT DETAILS"
-          }
-        }
-      },
-      "block_order": [
-        "bl_heading_ktnWJ8"
-      ],
-      "settings": {
-        "design_heading": "11",
-        "heading_align": "sr4-text-center",
-        "layout": "sr4-container-wrap",
-        "cl_bg": "",
-        "cl_bg_gradient": "",
-        "mg": "35px,,50px,",
-        "pd": "",
-        "mg_tb": "",
-        "pd_tb": "",
-        "mg_mb": "30px,,30px,",
-        "pd_mb": "",
-        "use_cus_css": true,
-        "code_cus_css": ".SectionID .sr4_des_title_11 .sr4-section-title>span:after{\n    width: 100%;\n    max-width: 439px;\n    height: 1px;\n    background-color: #717171;\n}\n.SectionID .sr4_des_title_11 .sr4-section-title {\n    padding-bottom: 20px;\n}"
-      }
-    },
-    "1648884254eae8e0bd": {
-      "type": "contact-form",
-      "blocks": {
-        "1648884254cd155bea-1": {
-          "type": "bl_info",
-          "settings": {
-            "heading": "",
-            "text": ""
-          }
-        },
-        "1648884254cd155bea-0": {
-          "type": "bl_form",
-          "settings": {
-            "heading": "",
-            "enable_phone": true,
-            "enable_full_btn": false,
-            "button_style": "outline",
-            "btn_size": "medium",
-            "btn_cl": "dark"
-          }
-        }
-      },
-      "block_order": [
-        "1648884254cd155bea-1",
-        "1648884254cd155bea-0"
-      ],
-      "custom_css": [],
-      "settings": {
-        "enable_map": false,
-        "map": "",
-        "layout": "sr4-container-wrap",
-        "cl_bg": "rgba(0,0,0,0)",
-        "cl_bg_gradient": "",
-        "mg": ",,30px,",
-        "pd": "20px,20px,20px,20px",
-        "mg_tb": "20px,0px,20px,0px",
-        "pd_tb": "",
-        "mg_mb": "",
-        "pd_mb": "20px,00px,20px,0px",
-        "use_cus_css": false,
-        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
-      }
-    },
     "sidebar-page": {
       "type": "sidebar-page",
       "disabled": true,
@@ -128,13 +55,78 @@
         "sidebar_bdr": 5,
         "sidebar_pd": 10
       }
+    },
+    "contact_form_R67Tg3": {
+      "type": "contact-form",
+      "blocks": {
+        "bl_info_QQVbB3": {
+          "type": "bl_info",
+          "settings": {
+            "heading": "Contact Us",
+            "svg_color": "#000000",
+            "font_heading": "1",
+            "font_link": "1",
+            "font_subb": "1",
+            "phone_label": "Phone:",
+            "phone_number": "1111111111",
+            "phone_time": "Monday-Saturday 9:00AM-5:30 PM",
+            "whatsapp_label": "WhatsApp:",
+            "whatsapp_number": "+111111111",
+            "whatsapp_msg": "Hello, I have a question about xyz",
+            "whatsapp_time": "Monday-Saturday 9:00AM-5:30 PM",
+            "email_label": "Email:",
+            "email_address": "info@xyz.com",
+            "studio_label": "Studio:",
+            "studio_address": "xyz address",
+            "studio_phone": "+1111111111",
+            "studio_time": "Monday-Saturday 12:30PM-8:30 PM"
+          }
+        },
+        "bl_form_b6jpey": {
+          "type": "bl_form",
+          "settings": {
+            "heading": "Drop us a message!",
+            "enable_phone": true,
+            "btn_width_desktop": 290,
+            "btn_width_mobile": 312,
+            "btn_height": 40,
+            "btn_font_size": 15,
+            "btn_font_weight": "400",
+            "btn_border_radius": 0,
+            "btn_letter_spacing": "2",
+            "btn_bg_color": "#000000",
+            "enable_full_btn": false,
+            "button_style": "default",
+            "btn_size": "extra-small",
+            "btn_cl": "dark"
+          }
+        }
+      },
+      "block_order": [
+        "bl_info_QQVbB3",
+        "bl_form_b6jpey"
+      ],
+      "settings": {
+        "enable_map": false,
+        "map": "",
+        "layout": "sr4-container-wrap",
+        "cl_bg": "rgba(0,0,0,0)",
+        "cl_bg_gradient": "",
+        "mg": "",
+        "pd": "20px,,27px,",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": "",
+        "pd_mb": "30px,10px,40px,10px",
+        "use_cus_css": true,
+        "code_cus_css": "@media (min-width: 1025px) {\n .SectionID .sr4-container {\n        max-width: 1230px;\n    }\n}"
+      }
     }
   },
   "order": [
     "heading",
     "main",
-    "top_heading_jkBwik",
-    "1648884254eae8e0bd",
-    "sidebar-page"
+    "sidebar-page",
+    "contact_form_R67Tg3"
   ]
 }
